@@ -1,5 +1,4 @@
-# SE302Project
-IEU SE 302 Project about syllabus download. 
+**This is a school project; it's about downloading syllabus content from IEU's site to your computer.**
 # Developers Team: 
 - Cihan Çoban
 - Kaan Altıntaş
