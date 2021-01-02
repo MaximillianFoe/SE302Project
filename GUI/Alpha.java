@@ -1,59 +1,47 @@
+import javax.imageio.ImageIO;
 import javax.swing.*; // GUI için Swing kütüphanesini tamamen ekledik.
-import java.awt.event.*; // Butonu ve bazı diğer şeyleri kullanmak için tetikleyici kütüphane.
-import java.awt.*; // Yazı kutusu için ekledik, ileride belki başka şeyler için kullanırız.
+import java.awt.*; // Okul logosu için.
+import java.io.IOException;
+import java.net.URL; // Okul logosu için.
 
 public class Alpha {
     public static void main(String[] args) {
         JFrame Syllabus = new JFrame(); // Ana pencereyi oluşturuyoruz.
-        JTextField CourseName = new JTextField(); // Ders kodunun yazılacağı yazı kutusunu oluşturuyoruz.
-        JTextArea textArea = new JTextArea();
-        CourseName = new JTextField(20);
-        CourseName.addActionListener(this);
-
-        super(new GridBagLayout());
-        textArea = new JTextArea(5, 20);
-        textArea.setEditable(false);
-        JScrollPane scrollPane = new JScrollPane(textArea);
-
-        GridBagConstraints textCons = new GridBagConstraints();
-        textCons.gridwidth = GridBagConstraints.REMAINDER;
-
-        textCons.fill = GridBagConstraints.HORIZONTAL;
-        CourseName.add(textCons);
-
-        textCons.fill = GridBagConstraints.BOTH;
-        textCons.weightx = 1.0;
-        textCons.weighty = 1.0;
-        scrollPane.add(textCons);
-
-        JButton Download = new JButton("Download Course");
+        JButton Download = new JButton("Download Course"); // Download butonunu oluşturuyoruz.
+        Syllabus.setSize(300,300); // Ana pencerenin boyutlarını belirliyoruz.
         Download.setBounds(130,100,133, 35); // Download butonu için koordinatlar.
+        Syllabus.setLayout(null); // Layout ayarlarını şimdilik boş bıraktık.
 
-        Syllabus.add(CourseName);
-        Syllabus.add(scrollPane);
-        Syllabus.add(textArea);
-
-        JList FacultyList = new JList(); //Listeyi oluşturuyoruz.
         JLabel FacultyListText = new JLabel("Select Faculty:"); //Ekrandaki yerini sonra belirleyeceğiz.
-
-        String Faculty[]= { "CE","BME","EEE","IE","DFE","GBE","AE","CIE","ME","MCE","SE"};
-        FacultyList = new JList(Faculty); // Arraydeki verileri yeni listeye ekliyoruz.
+        String[] Faculty = { "CE","BME","EEE","IE","DFE","GBE","AE","CIE","ME","MCE","SE"};
+        JList FacultyList = new JList(Faculty); //Listeyi oluşturuyoruz.
         FacultyList.setSelectedIndex(0); // Default olarak seçili değeri ayarlıyoruz, ben CE ayarladım.
         FacultyList.setBounds(50,50,70,188); // Listenin uzunluğunu test ederek gerekli şekilde ayarladık.
 
+        JTextField CourseCode = new JTextField("Course Code"); // Ders kodunu gireceğimiz alanı oluşturduk.
+        CourseCode.setEditable(true); // Düzenlenebilir yaptık.
+        CourseCode.setBounds(130,50,133,35);
+        FacultyListText.setBounds(50,20,133,35); // Uyarı yazısının bölgesini ve boyutunu yazıyoruz.
+
+        Syllabus.add(FacultyListText); // Fakülte seçimi için uyarı yazısını ekledik.
         Syllabus.add(FacultyList); // Listeyi pencereye ekliyoruz.
-        Syllabus.add(FacultyListText);
-
         Syllabus.add(Download); // Butonu oluşturduk ancak şimdi pencereye eklememiz gerek.
+        Syllabus.add(CourseCode); // Ders kodunu yazacağımız kutuyu ekliyoruz.
 
-        Download.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent pressDownloadButton){
-                // Buraya Download butonuna tıklayınca çalışacak kodlar eklenecek. Büyük ihtimalle metod olarak.
-            }
+        Image ieuLogo = null;
+        try {
+            URL schLogo = new URL("http://www.ieu.edu.tr/images/logoyeni_tr.png"); // Okul logosunun adresi.
+            ieuLogo = ImageIO.read(schLogo);
+        } catch (IOException DD) { // URL'de hata olursa uygulama şimdilik çalışmıyor.
+            DD.printStackTrace();
+        }
+        JLabel logoCentered = new JLabel(new ImageIcon(ieuLogo)); // Logo için gizli kutu ayarladık.
+        logoCentered.setBounds(60,30,180,109); // Logonun hizası ve boyutu.
+        Syllabus.add(logoCentered); // Logoyu ekledik.
+
+        Download.addActionListener(pressDownloadButton -> {
+            // Buraya Download butonuna tıklayınca çalışacak kodlar eklenecek. Büyük ihtimalle metod olarak.
         });
-
-        Syllabus.setSize(500,450); // Ana pencerenin boyutlarını belirliyoruz.
-        Syllabus.setLayout(null); // Layout ayarlarını şimdilik boş bıraktık.
         Syllabus.setVisible(true); // Pencereyi görünür kıldık.
     }
 }
