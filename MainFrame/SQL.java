@@ -6,7 +6,7 @@ import java.util.Calendar;
 import java.util.Scanner;
 import java.sql.*;
 
-public class Main {
+public class SQL {
     static Connection con;
     public static void main(String[] args) {
         try{

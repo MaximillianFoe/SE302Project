@@ -1,7 +1,12 @@
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import javax.swing.*;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import  org.apache.poi.hssf.usermodel.HSSFSheet;
+import  org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import  org.apache.poi.hssf.usermodel.HSSFRow;
 
 public class DownloadURL{
     public static void main(String[] args, String Faculty, String courseCode) throws IOException {
@@ -9,20 +14,41 @@ public class DownloadURL{
         Connection connectionToCourse = Jsoup.connect(courseSite); // Sayfaya bağlanmam için JSoup komutu.
         Document sitePart = connectionToCourse.get(); // Siteden verileri çekiyoruz.
 
+        JFrame messageWindow = new JFrame(); // Ana pencereyi oluşturuyoruz.
+
         // Gerekli bütün veri yapımızı burada oluşturacağız.
-        String courseName = sitePart.getElementById("course_name").text();
-        String termDate = sitePart.getElementById("semester").text();
-        String theoryTime = sitePart.getElementById("weekly_hours").text();
-        String labTime = sitePart.getElementById("app_hours").text();
-        String localCredits = sitePart.getElementById("ieu_credit").text();
-        String ectsCredits = sitePart.getElementById("ects_credit").text();
-        String preRequisites = sitePart.getElementById("pre_requisites").text();
-        String courseLanguage = sitePart.getElementById("course_lang").text();
-        String courseType = sitePart.getElementById("course_type").text();
-        String courseLevel = sitePart.getElementById("course_level").text();
-        String courseCoordinator = sitePart.getElementById("coordinator_list").text();
-        String courseLecturer = sitePart.getElementById("lecturer_list").text();
-        String courseOutcomes = sitePart.getElementById("outcome").text();
+        String courseName = null;
+        String termDate = null;
+        String theoryTime = null;
+        String labTime = null;
+        String localCredits = null;
+        String ectsCredits = null;
+        String preRequisites = null;
+        String courseLanguage = null;
+        String courseType = null;
+        String courseLevel = null;
+        String courseCoordinator = null;
+        String courseLecturer = null;
+        String courseOutcomes = null;
+
+        try {
+            courseName = sitePart.getElementById("course_name").text();
+            termDate = sitePart.getElementById("semester").text();
+            theoryTime = sitePart.getElementById("weekly_hours").text();
+            labTime = sitePart.getElementById("app_hours").text();
+            localCredits = sitePart.getElementById("ieu_credit").text();
+            ectsCredits = sitePart.getElementById("ects_credit").text();
+            preRequisites = sitePart.getElementById("pre_requisites").text();
+            courseLanguage = sitePart.getElementById("course_lang").text();
+            courseType = sitePart.getElementById("course_type").text();
+            courseLevel = sitePart.getElementById("course_level").text();
+            courseCoordinator = sitePart.getElementById("coordinator_list").text();
+            courseLecturer = sitePart.getElementById("lecturer_list").text();
+            courseOutcomes = sitePart.getElementById("outcome").text();
+        }
+        catch (Exception e){
+            JOptionPane.showMessageDialog(messageWindow, "Something went wrong. But your file maybe created.");
+        }
 
         String []courseWeeks = new String[17]; // Index dışında çıkmaması için 17 tane ayarlamak zorunda kaldım.
         for (int haftaSayisi = 1; haftaSayisi <= 16; haftaSayisi++){ // Hafta sayımız belli olduğu için rahatlıkla for döngüsü yaratabildik.
@@ -30,7 +56,6 @@ public class DownloadURL{
         }
 
         // Değerlendirme ölçütleri için veri yapısı oluşturacağız, 12x2 = 24 tane olacak.
-
         String attendanceNumber = sitePart.getElementById("attendance_no").text();
         String attendancePer = sitePart.getElementById("attendance_per").text();
 
@@ -68,7 +93,6 @@ public class DownloadURL{
         String totalPer = sitePart.getElementById("ara_total_per").text();
 
         // AKTS tablosu için veri yapısı oluşturuyoruz. aşağı yukarı 11x3 bir tablo olması gerekiyor.
-
         String courseHourNumber = sitePart.getElementById("course_hour_number").text();
         String courseHourDuration = sitePart.getElementById("course_hour_duration").text();
         String courseHourWLoad = sitePart.getElementById("course_hour_total_workload").text();
@@ -132,7 +156,24 @@ public class DownloadURL{
 
         // Sonra hepsini topluyoruz, mükemmel şekilde çalışıyor!
         int totalWLoad = iCH + iLH + iOH + iFH + iQH + iHH + iPH + iPJH + iPOH + iMH + iFIH;
-        System.out.println(totalWLoad);
+
+        try {
+            String downloadedCourseName = courseCode + ".xls";
+            HSSFWorkbook downloadedCourseFile = new HSSFWorkbook();
+            HSSFSheet sheet = downloadedCourseFile.createSheet(courseCode);
+
+            HSSFRow rowhead = sheet.createRow((short)0);
+            rowhead.createCell(0).setCellValue(courseName);
+
+            FileOutputStream fileOut = new FileOutputStream(downloadedCourseName);
+            downloadedCourseFile.write(fileOut);
+            fileOut.close();
+            downloadedCourseFile.close();
+            System.out.println("Your excel file has been generated!");
+
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
 
     }
 }
