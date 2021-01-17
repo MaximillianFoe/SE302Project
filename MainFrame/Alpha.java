@@ -5,7 +5,7 @@ import java.awt.*; // Okul logosu için.
 import java.net.URL; // Okul logosu için.
 
 public class Alpha {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         JFrame Syllabus = new JFrame(); // Ana pencereyi oluşturuyoruz.
         JButton Download = new JButton("Download Course"); // Download butonunu oluşturuyoruz.
         JButton CourseDatabase = new JButton("Downloaded List"); // İndirilenleri görüntülemek için buton oluşturuyoruz.
@@ -18,7 +18,8 @@ public class Alpha {
         FacultyListText.setBounds(45,135,133,35); // Uyarı yazısının bölgesini ve boyutunu yazıyoruz.
 
         String[] Faculty = { "CE","BME","EEE","IE","DFE","GBE","AE","CIE","ME","MCE","SE"};
-        JList FacultyList = new JList(Faculty); //Listeyi oluşturuyoruz.
+        //Listeyi oluşturuyoruz.
+        JList<String> FacultyList = new JList<>(Faculty);
         FacultyList.setSelectedIndex(0); // Default olarak seçili değeri ayarlıyoruz, ben CE ayarladım.
         FacultyList.setBounds(45,165,70,188); // Listenin uzunluğunu test ederek gerekli şekilde ayarladık.
 
@@ -56,12 +57,12 @@ public class Alpha {
         Syllabus.add(logoCentered); // Logoyu ekledik.
 
         Download.addActionListener(pressDownloadButton -> {
-            String selectedFaculty = FacultyList.getSelectedValue().toString();
+            String selectedFaculty = FacultyList.getSelectedValue();
             String FirstBox = CourseName.getText();
             String SecondBox = CourseCode.getText();
             String selectedCourse = FirstBox + "+" + SecondBox; // Okulun sitesindeki format böyle.
             try {
-                DownloadURL.main(null, selectedFaculty, selectedCourse);
+                DownloadURL.main(selectedFaculty, selectedCourse);
             } catch (IOException e) {
                 JOptionPane.showMessageDialog(Syllabus, "Something went wrong.");
             }

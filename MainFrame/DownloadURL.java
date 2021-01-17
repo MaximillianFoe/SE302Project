@@ -9,7 +9,7 @@ import  org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import  org.apache.poi.hssf.usermodel.HSSFRow;
 
 public class DownloadURL{
-    public static void main(String[] args, String Faculty, String courseCode) throws IOException {
+    public static void main(String Faculty, String courseCode) throws IOException {
         String courseSite = "https://" + Faculty + ".ieu.edu.tr/tr/syllabus/type/read/id/" + courseCode; // Sitenin adresi belirli; facultyName ve courseCode kısmını kullanıcı belirliyor.
         Connection connectionToCourse = Jsoup.connect(courseSite); // Sayfaya bağlanmam için JSoup komutu.
         Document sitePart = connectionToCourse.get(); // Siteden verileri çekiyoruz.
@@ -169,10 +169,10 @@ public class DownloadURL{
             downloadedCourseFile.write(fileOut);
             fileOut.close();
             downloadedCourseFile.close();
-            System.out.println("Your excel file has been generated!");
+            JOptionPane.showMessageDialog(messageWindow, "File created succesfully!");
 
         } catch (Exception ex) {
-            System.out.println(ex);
+            JOptionPane.showMessageDialog(messageWindow, "Something went wrong. Your file couldn't create.");
         }
 
     }
