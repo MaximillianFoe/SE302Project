@@ -31,5 +31,47 @@ public class DownloadURL {
             courseWeeks[haftaSayisi] = sitePart.getElementById("hafta_" + haftaSayisi).text();
         }
 
+        // Değerlendirme ölçütleri için veri yapısı oluşturacağız, 12x2 = 24 tane olacak.
+
+        String attendanceNumber = sitePart.getElementById("attendance_no").text();
+        String attendancePer = sitePart.getElementById("attendance_per").text();
+
+        String labNumber = sitePart.getElementById("lab_no").text();
+        String labPer = sitePart.getElementById("lab_per").text();
+
+        String fieldNumber = sitePart.getElementById("fieldwork_no").text();
+        String fieldPer = sitePart.getElementById("fieldwork_per").text();
+
+        String quizNumber = sitePart.getElementById("quiz_no").text();
+        String quizPer = sitePart.getElementById("quiz_per").text();
+
+        String hWorkNumber = sitePart.getElementById("homework_no").text();
+        String hWorkPer = sitePart.getElementById("homework_per").text();
+
+        String presentNumber = sitePart.getElementById("presentation_no").text();
+        String presentPer = sitePart.getElementById("presentation_per").text();
+
+        String projectnumber = sitePart.getElementById("project_no").text();
+        String projectPer = sitePart.getElementById("project_per").text();
+
+        String portNumber = sitePart.getElementById("portfolios__no").text();
+        String portPer = sitePart.getElementById("portfolios_per").text();
+
+        String midtermNumber = sitePart.getElementById("midterm_no").text();
+        String midtermPer = sitePart.getElementById("midterm_per").text();
+
+        String finalNumber = sitePart.getElementById("final_no").text();
+        String finalPer = sitePart.getElementById("final_per").text();
+
+        String totalNumber = sitePart.getElementById("ara_total_no").text();
+        String totalPer = sitePart.getElementById("ara_total_per").text();
+
+        // AKTS tablosu için veri yapısı oluşturuyoruz.
+        // Normalde 12x3 olması gerekiyor ancak son tabloyu çarpım olarak yapacağım.
+
+
+
+
+
     }
 }
