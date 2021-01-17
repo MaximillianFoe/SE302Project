@@ -11,7 +11,8 @@ public class DownloadURL {
         Connection connectionToCourse = Jsoup.connect(courseSite); // Sayfaya bağlanmam için JSoup komutu.
         Document sitePart = connectionToCourse.get(); // Siteden verileri çekiyoruz.
 
-        String courseName = sitePart.getElementById("course_name").text(); // ID kısmını sayfa kaynağını inceleyerek alıyoruz.
+        // Gerekli bütün veri yapımızı burada oluşturacağız.
+        String courseName = sitePart.getElementById("course_name").text();
         String termDate = sitePart.getElementById("semester").text();
         String theoryTime = sitePart.getElementById("weekly_hours").text();
         String labTime = sitePart.getElementById("app_hours").text();
@@ -23,7 +24,12 @@ public class DownloadURL {
         String courseLevel = sitePart.getElementById("course_level").text();
         String courseCoordinator = sitePart.getElementById("coordinator_list").text();
         String courseLecturer = sitePart.getElementById("lecturer_list").text();
+        String courseOutcomes = sitePart.getElementById("outcome").text();
 
-        System.out.println(courseName + termDate);
-}
+        String []courseWeeks = new String[17]; // Index dışında çıkmaması için 17 tane ayarlamak zorunda kaldım.
+        for (int haftaSayisi = 1; haftaSayisi <= 16; haftaSayisi++){ // Hafta sayımız belli olduğu için rahatlıkla for döngüsü yaratabildik.
+            courseWeeks[haftaSayisi] = sitePart.getElementById("hafta_" + haftaSayisi).text();
+        }
+
+    }
 }
