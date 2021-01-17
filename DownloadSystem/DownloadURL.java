@@ -130,8 +130,10 @@ public class DownloadURL {
         int iPJH=Integer.parseInt(projectHourWLoad);
         int iPOH=Integer.parseInt(portHourWLoad);
         int iMH=Integer.parseInt(midtermHourWLoad);
-        int iFH=Integer.parseInt(finalHourWLoad);
+        int iFIH=Integer.parseInt(finalHourWLoad);
 
+        // Sonra hepsini topluyoruz, mükemmel şekilde çalışıyor!
+        int totalWLoad = iCH + iLH + iOH + iFH + iQH + iHH + iPH + iPJH + iPOH + iMH + iFIH;
 
     }
 }
