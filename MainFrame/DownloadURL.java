@@ -3,10 +3,8 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import java.io.IOException;
 
-public class DownloadURL {
-    public static void main(String[] args) throws IOException {
-        String courseCode = "SE+302";
-        String Faculty = "ce";
+public class DownloadURL{
+    public static void main(String[] args, String Faculty, String courseCode) throws IOException {
         String courseSite = "https://" + Faculty + ".ieu.edu.tr/tr/syllabus/type/read/id/" + courseCode; // Sitenin adresi belirli; facultyName ve courseCode kısmını kullanıcı belirliyor.
         Connection connectionToCourse = Jsoup.connect(courseSite); // Sayfaya bağlanmam için JSoup komutu.
         Document sitePart = connectionToCourse.get(); // Siteden verileri çekiyoruz.
@@ -134,6 +132,7 @@ public class DownloadURL {
 
         // Sonra hepsini topluyoruz, mükemmel şekilde çalışıyor!
         int totalWLoad = iCH + iLH + iOH + iFH + iQH + iHH + iPH + iPJH + iPOH + iMH + iFIH;
+        System.out.println(totalWLoad);
 
     }
 }
