@@ -1,16 +1,53 @@
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSocketFactory;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
 import javax.swing.*;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.File; // HTML dosyası yaratmak için en basit özelliği kullanıyoruz.
+import java.security.KeyManagementException; //SSL için.
+import java.security.NoSuchAlgorithmException; //SSL için.
+import java.security.cert.X509Certificate; //SSL için.
+
+class SSLHelper{ // Thanks to Zemian Deng to solve this SSL problem, that was pain in the ass! Love you mate! (https://dzone.com/articles/how-setup-custom)
+
+    static public Connection getConnection(String url){
+        return Jsoup.connect(url).sslSocketFactory(SSLHelper.socketFactory());
+    }
+
+    static private SSLSocketFactory socketFactory() {
+        TrustManager[] trustAllCerts = new TrustManager[]{new X509TrustManager() {
+            public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+                return new X509Certificate[0];
+            }
+
+            public void checkClientTrusted(X509Certificate[] certs, String authType) {
+            }
+
+            public void checkServerTrusted(X509Certificate[] certs, String authType) {
+            }
+        }};
+
+        try {
+            SSLContext sslContext = SSLContext.getInstance("SSL");
+            sslContext.init(null, trustAllCerts, new java.security.SecureRandom());
+            SSLSocketFactory result = sslContext.getSocketFactory();
+
+            return result;
+        } catch (NoSuchAlgorithmException | KeyManagementException e) {
+            throw new RuntimeException("Failed to create a SSL socket factory", e);
+        }
+    }
+}
 
 public class DownloadURL{
     public static void main(String Faculty, String courseCode, String prefLanguage) throws IOException {
         String courseSite = "https://" + Faculty + ".ieu.edu.tr/" + prefLanguage + "/syllabus/type/read/id/" + courseCode; // Sitenin adresi belirli; facultyName ve courseCode kısmını kullanıcı belirliyor.
-        Connection connectionToCourse = Jsoup.connect(courseSite); // Sayfaya bağlanmam için JSoup komutu.
-        Document sitePart = connectionToCourse.get(); // Siteden verileri çekiyoruz.
+        Document sitePart = SSLHelper.getConnection(courseSite).userAgent("Syllabus Agent").get();; // Siteden verileri çekiyoruz.
 
         JFrame messageWindow = new JFrame(); // Ana pencereyi oluşturuyoruz.
 

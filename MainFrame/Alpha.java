@@ -10,41 +10,39 @@ public class Alpha {
         JButton Download = new JButton("Download Course"); // Download butonunu oluşturuyoruz.
         JButton CourseDatabase = new JButton("Downloaded List"); // İndirilenleri görüntülemek için buton oluşturuyoruz.
         Syllabus.setSize(300,409); // Ana pencerenin boyutlarını belirliyoruz.
-        Download.setBounds(130,245,133, 35); // Download butonu için koordinatlar.
-        CourseDatabase.setBounds(130,288,133, 35); // İndirilenleri görüntülemek için koordinatlar.
+        Download.setBounds(130,245,140, 35); // Download butonu için koordinatlar.
+        CourseDatabase.setBounds(130,288,140, 35); // İndirilenleri görüntülemek için koordinatlar.
         Syllabus.setLayout(null); // Layout ayarlarını şimdilik boş bıraktık.
 
-
         JLabel selectionText = new JLabel("Language:"); //Ekrandaki yerini sonra belirleyeceğiz.
-        selectionText.setBounds(150,155,133,35); // Uyarı yazısının bölgesini ve boyutunu yazıyoruz.
+        selectionText.setBounds(150,155,140,20); // Uyarı yazısının bölgesini ve boyutunu yazıyoruz.
         ButtonGroup languageSelection = new ButtonGroup();
         JRadioButton turkishLanguage = new JRadioButton("TR", true);
-        turkishLanguage.setBounds(130,175,60,30);
+        turkishLanguage.setBounds(130,175,45,20);
         JRadioButton englishLanguage = new JRadioButton("EN", false);
-        englishLanguage.setBounds(180,175,60,30);
+        englishLanguage.setBounds(180,175,45,20);
         languageSelection.add(turkishLanguage);
         languageSelection.add(englishLanguage);
 
-
         JLabel FacultyListText = new JLabel("Select Faculty:"); //Ekrandaki yerini sonra belirleyeceğiz.
-        FacultyListText.setBounds(45,135,133,35); // Uyarı yazısının bölgesini ve boyutunu yazıyoruz.
+        FacultyListText.setBounds(45,130,130,45); // Uyarı yazısının bölgesini ve boyutunu yazıyoruz.
 
         String[] Faculty = { "CE","BME","EEE","IE","DFE","GBE","AE","CIE","ME","MCE","SE"};
         //Listeyi oluşturuyoruz.
         JList<String> FacultyList = new JList<>(Faculty);
         FacultyList.setSelectedIndex(0); // Default olarak seçili değeri ayarlıyoruz, ben CE ayarladım.
-        FacultyList.setBounds(45,165,70,188); // Listenin uzunluğunu test ederek gerekli şekilde ayarladık.
+        FacultyList.setBounds(45,165,70,195); // Listenin uzunluğunu test ederek gerekli şekilde ayarladık.
 
         JTextField CourseName = new JTextField("SE"); // Ders kodunu gireceğimiz alanı oluşturduk.
         CourseName.setEditable(true); // Düzenlenebilir yaptık.
         CourseName.setBounds(130,205,55,35);
 
         JLabel PlusSign = new JLabel("+"); //Ekrandaki yerini sonra belirleyeceğiz.
-        PlusSign.setBounds(190,215,10,10); // Uyarı yazısının bölgesini ve boyutunu yazıyoruz.
+        PlusSign.setBounds(195,215,10,10); // Uyarı yazısının bölgesini ve boyutunu yazıyoruz.
 
         JTextField CourseCode = new JTextField("302"); // Ders kodunu gireceğimiz alanı oluşturduk.
         CourseCode.setEditable(true); // Düzenlenebilir yaptık.
-        CourseCode.setBounds(205,205,55,35);
+        CourseCode.setBounds(215,205,55,35);
 
         // Ekrana öğelerimizi ekliyoruz.
         Syllabus.add(FacultyListText); // Fakülte seçimi için uyarı yazısını ekledik.
