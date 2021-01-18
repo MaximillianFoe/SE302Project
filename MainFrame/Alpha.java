@@ -90,6 +90,7 @@ public class Alpha {
             }
         });
 
+        Syllabus.setTitle("Syllabus Agent v1.0");
         Syllabus.setVisible(true); // Pencereyi görünür kıldık.
     }
 }

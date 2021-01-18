@@ -2,11 +2,9 @@ import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import javax.swing.*;
-import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
-import  org.apache.poi.hssf.usermodel.HSSFSheet;
-import  org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import  org.apache.poi.hssf.usermodel.HSSFRow;
+import java.io.File; // HTML dosyası yaratmak için en basit özelliği kullanıyoruz.
 
 public class DownloadURL{
     public static void main(String Faculty, String courseCode, String prefLanguage) throws IOException {
@@ -158,5 +156,13 @@ public class DownloadURL{
         int totalWLoad = iCH + iLH + iOH + iFH + iQH + iHH + iPH + iPJH + iPOH + iMH + iFIH;
         System.out.println(courseName);
 
+        try {
+            File downloadedFile = new File(courseCode + ".html");
+            FileWriter downloadedWriter = new FileWriter(courseCode + ".html");
+            downloadedWriter.write(courseName);
+            downloadedWriter.close();
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(messageWindow, "Something went wrong! Error Code:" + e);
+        }
     }
 }
