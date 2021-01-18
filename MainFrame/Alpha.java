@@ -88,6 +88,14 @@ public class Alpha {
             }
         });
 
+        CourseDatabase.addActionListener(pressDownloadButton -> {
+            try {
+                CoursesList.main(null);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(Syllabus, "Something went wrong.");
+            }
+        });
+
         Syllabus.setTitle("Syllabus Agent v1.0");
         Syllabus.setVisible(true); // Pencereyi görünür kıldık.
     }

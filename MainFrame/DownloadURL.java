@@ -6,6 +6,7 @@ import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 import javax.swing.*;
+import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.File; // HTML dosyası yaratmak için en basit özelliği kullanıyoruz.
@@ -192,6 +193,8 @@ public class DownloadURL{
         // Sonra hepsini topluyoruz, mükemmel şekilde çalışıyor!
         int totalWLoad = iCH + iLH + iOH + iFH + iQH + iHH + iPH + iPJH + iPOH + iMH + iFIH;
 
+        String courseCodeForHTML = courseCode.replace("+", " "); // Mükemmel bir dönüşüm yaptık burada.
+
         try {
             File downloadedFile = new File(courseCode + ".html");
             FileWriter downloadedWriter = new FileWriter(courseCode + ".html");
@@ -243,7 +246,7 @@ public class DownloadURL{
                     "<td style=\"width: 16.6667%; height: 18px;\"><strong>ECTS</strong></td>\n" +
                     "</tr>\n" +
                     "<tr style=\"height: 18px;\">\n" +
-                    "<td style=\"width: 16.6667%; height: 18px;\">" + courseCode + "</td>\n" +
+                    "<td style=\"width: 16.6667%; height: 18px;\">" + courseCodeForHTML + "</td>\n" +
                     "<td style=\"width: 16.6667%; height: 18px;\">" + termDate + "</td>\n" +
                     "<td style=\"width: 16.6667%; height: 18px;\">" + theoryTime + "</td>\n" +
                     "<td style=\"width: 16.6667%; height: 18px;\">" + labTime + "</td>\n" +
@@ -644,5 +647,11 @@ public class DownloadURL{
         } catch (IOException e) {
             JOptionPane.showMessageDialog(messageWindow, "Something went wrong! Error Code:" + e);
         }
+
+        BufferedWriter addCourseToDatabase = new BufferedWriter( new FileWriter("savedCourses.txt",true) );
+        addCourseToDatabase.write(courseCodeForHTML);
+        addCourseToDatabase.flush();
+        addCourseToDatabase.newLine();
+        addCourseToDatabase.close();
     }
 }
