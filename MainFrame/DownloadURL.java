@@ -87,8 +87,8 @@ public class DownloadURL{
         String finalNumber = sitePart.getElementById("final_no").text();
         String finalPer = sitePart.getElementById("final_per").text();
 
-        String totalNumber = sitePart.getElementById("ara_total_no").text();
-        String totalPer = sitePart.getElementById("ara_total_per").text();
+        String araToNumber = sitePart.getElementById("ara_total_no").text();
+        String araToPer = sitePart.getElementById("ara_total_per").text();
 
         // AKTS tablosu için veri yapısı oluşturuyoruz. aşağı yukarı 11x3 bir tablo olması gerekiyor.
         String courseHourNumber = sitePart.getElementById("course_hour_number").text();
@@ -154,6 +154,7 @@ public class DownloadURL{
 
         // Sonra hepsini topluyoruz, mükemmel şekilde çalışıyor!
         int totalWLoad = iCH + iLH + iOH + iFH + iQH + iHH + iPH + iPJH + iPOH + iMH + iFIH;
+
         try {
             File downloadedFile = new File(courseCode + ".html");
             FileWriter downloadedWriter = new FileWriter(courseCode + ".html");
@@ -225,19 +226,19 @@ public class DownloadURL{
                     "<tbody>\n" +
                     "<tr style=\"height: 18px;\">\n" +
                     "<td style=\"width: 50%; height: 18px;\"><strong>Prerequisites</strong></td>\n" +
-                    "<td style=\"width: 50%; height: 18px;\">&nbsp;</td>\n" +
+                    "<td style=\"width: 50%; height: 18px;\">" + preRequisites + "</td>\n" +
                     "</tr>\n" +
                     "<tr style=\"height: 18px;\">\n" +
                     "<td style=\"width: 50%; height: 18px;\"><strong>Course Language</strong></td>\n" +
-                    "<td style=\"width: 50%; height: 18px;\">&nbsp;</td>\n" +
+                    "<td style=\"width: 50%; height: 18px;\">" + courseLanguage + "</td>\n" +
                     "</tr>\n" +
                     "<tr style=\"height: 18px;\">\n" +
                     "<td style=\"width: 50%; height: 18px;\"><strong>Course Type</strong></td>\n" +
-                    "<td style=\"width: 50%; height: 18px;\">&nbsp;</td>\n" +
+                    "<td style=\"width: 50%; height: 18px;\">" + courseType + "</td>\n" +
                     "</tr>\n" +
                     "<tr style=\"height: 18px;\">\n" +
                     "<td style=\"width: 50%; height: 18px;\"><strong>Course Level</strong></td>\n" +
-                    "<td style=\"width: 50%; height: 18px;\">&nbsp;</td>\n" +
+                    "<td style=\"width: 50%; height: 18px;\">" + courseLevel + "</td>\n" +
                     "</tr>\n" +
                     "</tbody>\n" +
                     "</table>\n" +
@@ -252,11 +253,11 @@ public class DownloadURL{
                     "<tbody>\n" +
                     "<tr>\n" +
                     "<td style=\"width: 50%;\"><strong>Course Coordinator</strong></td>\n" +
-                    "<td style=\"width: 50%;\">&nbsp;</td>\n" +
+                    "<td style=\"width: 50%;\">" + courseCoordinator + "</td>\n" +
                     "</tr>\n" +
                     "<tr>\n" +
                     "<td style=\"width: 50%;\"><strong>Course Lecturer(s)</strong></td>\n" +
-                    "<td style=\"width: 50%;\">&nbsp;</td>\n" +
+                    "<td style=\"width: 50%;\">" + courseLecturer + "</td>\n" +
                     "</tr>\n" +
                     "<tr>\n" +
                     "<td style=\"width: 50%;\"><strong>Assistant(s)</strong></td>\n" +
@@ -279,7 +280,7 @@ public class DownloadURL{
                     "</tr>\n" +
                     "<tr>\n" +
                     "<td style=\"width: 50%;\"><strong>Learning Outcomes</strong></td>\n" +
-                    "<td style=\"width: 50%;\">&nbsp;</td>\n" +
+                    "<td style=\"width: 50%;\">" + courseOutcomes + "</td>\n" +
                     "</tr>\n" +
                     "<tr>\n" +
                     "<td style=\"width: 50%;\"><strong>Course Description</strong></td>\n" +
@@ -315,96 +316,63 @@ public class DownloadURL{
                     "</td>\n" +
                     "</tr>\n" +
                     "</tbody>\n" +
-                    "</table>\n" +
-                    "<table style=\"border-collapse: collapse; width: 100%; height: 288px;\" border=\"1\">\n" +
-                    "<tbody>\n" +
-                    "<tr style=\"height: 18px;\">\n" +
-                    "<td style=\"width: 10.523%; height: 18px;\"><strong>Week</strong></td>\n" +
-                    "<td style=\"width: 38.9903%; height: 18px;\"><strong>Subjects</strong></td>\n" +
-                    "<td style=\"width: 50.4866%; height: 18px;\"><strong>Required Materials</strong></td>\n" +
-                    "</tr>\n" +
-                    "<tr style=\"height: 18px;\">\n" +
-                    "<td style=\"width: 10.523%; height: 18px;\"><strong>1</strong></td>\n" +
-                    "<td style=\"width: 38.9903%; height: 18px;\">&nbsp;</td>\n" +
-                    "<td style=\"width: 50.4866%; height: 18px;\">&nbsp;</td>\n" +
-                    "</tr>\n" +
-                    "<tr style=\"height: 18px;\">\n" +
-                    "<td style=\"width: 10.523%; height: 18px;\"><strong>2</strong></td>\n" +
-                    "<td style=\"width: 38.9903%; height: 18px;\">&nbsp;</td>\n" +
-                    "<td style=\"width: 50.4866%; height: 18px;\">&nbsp;</td>\n" +
-                    "</tr>\n" +
-                    "<tr style=\"height: 18px;\">\n" +
-                    "<td style=\"width: 10.523%; height: 18px;\"><strong>3</strong></td>\n" +
-                    "<td style=\"width: 38.9903%; height: 18px;\">&nbsp;</td>\n" +
-                    "<td style=\"width: 50.4866%; height: 18px;\">&nbsp;</td>\n" +
-                    "</tr>\n" +
-                    "<tr style=\"height: 18px;\">\n" +
-                    "<td style=\"width: 10.523%; height: 18px;\"><strong>4</strong></td>\n" +
-                    "<td style=\"width: 38.9903%; height: 18px;\">&nbsp;</td>\n" +
-                    "<td style=\"width: 50.4866%; height: 18px;\">&nbsp;</td>\n" +
-                    "</tr>\n" +
-                    "<tr style=\"height: 18px;\">\n" +
-                    "<td style=\"width: 10.523%; height: 18px;\"><strong>5</strong></td>\n" +
-                    "<td style=\"width: 38.9903%; height: 18px;\">&nbsp;</td>\n" +
-                    "<td style=\"width: 50.4866%; height: 18px;\">&nbsp;</td>\n" +
-                    "</tr>\n" +
-                    "<tr style=\"height: 18px;\">\n" +
-                    "<td style=\"width: 10.523%; height: 18px;\"><strong>6</strong></td>\n" +
-                    "<td style=\"width: 38.9903%; height: 18px;\">&nbsp;</td>\n" +
-                    "<td style=\"width: 50.4866%; height: 18px;\">&nbsp;</td>\n" +
-                    "</tr>\n" +
-                    "<tr style=\"height: 18px;\">\n" +
-                    "<td style=\"width: 10.523%; height: 18px;\"><strong>7</strong></td>\n" +
-                    "<td style=\"width: 38.9903%; height: 18px;\">&nbsp;</td>\n" +
-                    "<td style=\"width: 50.4866%; height: 18px;\">&nbsp;</td>\n" +
-                    "</tr>\n" +
-                    "<tr style=\"height: 18px;\">\n" +
-                    "<td style=\"width: 10.523%; height: 18px;\"><strong>8</strong></td>\n" +
-                    "<td style=\"width: 38.9903%; height: 18px;\">&nbsp;</td>\n" +
-                    "<td style=\"width: 50.4866%; height: 18px;\">&nbsp;</td>\n" +
-                    "</tr>\n" +
-                    "<tr style=\"height: 18px;\">\n" +
-                    "<td style=\"width: 10.523%; height: 18px;\"><strong>9</strong></td>\n" +
-                    "<td style=\"width: 38.9903%; height: 18px;\">&nbsp;</td>\n" +
-                    "<td style=\"width: 50.4866%; height: 18px;\">&nbsp;</td>\n" +
-                    "</tr>\n" +
-                    "<tr style=\"height: 18px;\">\n" +
-                    "<td style=\"width: 10.523%; height: 18px;\"><strong>10</strong></td>\n" +
-                    "<td style=\"width: 38.9903%; height: 18px;\">&nbsp;</td>\n" +
-                    "<td style=\"width: 50.4866%; height: 18px;\">&nbsp;</td>\n" +
-                    "</tr>\n" +
-                    "<tr style=\"height: 18px;\">\n" +
-                    "<td style=\"width: 10.523%; height: 18px;\"><strong>11</strong></td>\n" +
-                    "<td style=\"width: 38.9903%; height: 18px;\">&nbsp;</td>\n" +
-                    "<td style=\"width: 50.4866%; height: 18px;\">&nbsp;</td>\n" +
-                    "</tr>\n" +
-                    "<tr style=\"height: 18px;\">\n" +
-                    "<td style=\"width: 10.523%; height: 18px;\"><strong>12</strong></td>\n" +
-                    "<td style=\"width: 38.9903%; height: 18px;\">&nbsp;</td>\n" +
-                    "<td style=\"width: 50.4866%; height: 18px;\">&nbsp;</td>\n" +
-                    "</tr>\n" +
-                    "<tr style=\"height: 18px;\">\n" +
-                    "<td style=\"width: 10.523%; height: 18px;\"><strong>13</strong></td>\n" +
-                    "<td style=\"width: 38.9903%; height: 18px;\">&nbsp;</td>\n" +
-                    "<td style=\"width: 50.4866%; height: 18px;\">&nbsp;</td>\n" +
-                    "</tr>\n" +
-                    "<tr style=\"height: 18px;\">\n" +
-                    "<td style=\"width: 10.523%; height: 18px;\"><strong>14</strong></td>\n" +
-                    "<td style=\"width: 38.9903%; height: 18px;\">&nbsp;</td>\n" +
-                    "<td style=\"width: 50.4866%; height: 18px;\">&nbsp;</td>\n" +
-                    "</tr>\n" +
-                    "<tr style=\"height: 18px;\">\n" +
-                    "<td style=\"width: 10.523%; height: 18px;\"><strong>15</strong></td>\n" +
-                    "<td style=\"width: 38.9903%; height: 18px;\">&nbsp;</td>\n" +
-                    "<td style=\"width: 50.4866%; height: 18px;\">&nbsp;</td>\n" +
-                    "</tr>\n" +
-                    "<tr>\n" +
-                    "<td style=\"width: 10.523%;\"><strong>16</strong></td>\n" +
-                    "<td style=\"width: 38.9903%;\">&nbsp;</td>\n" +
-                    "<td style=\"width: 50.4866%;\">&nbsp;</td>\n" +
-                    "</tr>\n" +
-                    "</tbody>\n" +
-                    "</table>\n" +
+                    "</table>\n" + "<table style=\"border-collapse: collapse; width: 100%; height: 306px;\" border=\"1\">\n" +
+                            "<tbody>\n" +
+                            "<tr style=\"height: 18px;\">\n" +
+                            "<td style=\"width: 10.523%; height: 18px;\"><strong>Week &amp; Subjects &amp; Required Materials</strong></td>\n" +
+                            "</tr>\n" +
+                            "<tr style=\"height: 18px;\">\n" +
+                            "<td style=\"width: 10.523%; height: 18px;\">" + courseWeeks[1] + "</td>\n" +
+                            "</tr>\n" +
+                            "<tr style=\"height: 18px;\">\n" +
+                            "<td style=\"width: 10.523%; height: 18px;\">" + courseWeeks[2] + "</td>\n" +
+                            "</tr>\n" +
+                            "<tr style=\"height: 18px;\">\n" +
+                            "<td style=\"width: 10.523%; height: 18px;\">" + courseWeeks[3] + "</td>\n" +
+                            "</tr>\n" +
+                            "<tr style=\"height: 18px;\">\n" +
+                            "<td style=\"width: 10.523%; height: 18px;\">" + courseWeeks[4] + "</td>\n" +
+                            "</tr>\n" +
+                            "<tr style=\"height: 18px;\">\n" +
+                            "<td style=\"width: 10.523%; height: 18px;\">" + courseWeeks[5] + "</td>\n" +
+                            "</tr>\n" +
+                            "<tr style=\"height: 18px;\">\n" +
+                            "<td style=\"width: 10.523%; height: 18px;\">" + courseWeeks[6] + "</td>\n" +
+                            "</tr>\n" +
+                            "<tr style=\"height: 18px;\">\n" +
+                            "<td style=\"width: 10.523%; height: 18px;\">" + courseWeeks[7] + "</td>\n" +
+                            "</tr>\n" +
+                            "<tr style=\"height: 18px;\">\n" +
+                            "<td style=\"width: 10.523%; height: 18px;\">" + courseWeeks[8] + "</td>\n" +
+                            "</tr>\n" +
+                            "<tr style=\"height: 18px;\">\n" +
+                            "<td style=\"width: 10.523%; height: 18px;\">" + courseWeeks[9] + "</td>\n" +
+                            "</tr>\n" +
+                            "<tr style=\"height: 18px;\">\n" +
+                            "<td style=\"width: 10.523%; height: 18px;\">" + courseWeeks[10] + "</td>\n" +
+                            "</tr>\n" +
+                            "<tr style=\"height: 18px;\">\n" +
+                            "<td style=\"width: 10.523%; height: 18px;\">" + courseWeeks[11] + "</td>\n" +
+                            "</tr>\n" +
+                            "<tr style=\"height: 18px;\">\n" +
+                            "<td style=\"width: 10.523%; height: 18px;\">" + courseWeeks[12] + "</td>\n" +
+                            "</tr>\n" +
+                            "<tr style=\"height: 18px;\">\n" +
+                            "<td style=\"width: 10.523%; height: 18px;\">" + courseWeeks[13] + "</td>\n" +
+                            "</tr>\n" +
+                            "<tr style=\"height: 18px;\">\n" +
+                            "<td style=\"width: 10.523%; height: 18px;\">" + courseWeeks[14] + "</td>\n" +
+                            "</tr>\n" +
+                            "<tr style=\"height: 18px;\">\n" +
+                            "<td style=\"width: 10.523%; height: 18px;\">" + courseWeeks[15] + "</td>\n" +
+                            "</tr>\n" +
+                            "<tr style=\"height: 18px;\">\n" +
+                            "<td style=\"width: 10.523%; height: 18px;\">" + courseWeeks[16] + "</td>\n" +
+                            "</tr>\n" +
+                            "</tbody>\n" +
+                            "</table>\n" +
+                            "<table style=\"width: 100%; border-collapse: collapse; border-style: hidden;\" border=\"1\">\n" +
+                            "</table>" +
                     "<table style=\"width: 100%; border-collapse: collapse; border-style: hidden;\" border=\"1\">\n" +
                     "<tbody>\n" +
                     "<tr>\n" +
@@ -460,63 +428,63 @@ public class DownloadURL{
                     "</tr>\n" +
                     "<tr style=\"height: 18px;\">\n" +
                     "<td style=\"width: 29.3187%; height: 18px;\">Participation</td>\n" +
-                    "<td style=\"width: 16.2409%; height: 18px;\">&nbsp;</td>\n" +
-                    "<td style=\"width: 54.3796%; height: 18px;\">&nbsp;</td>\n" +
+                    "<td style=\"width: 16.2409%; height: 18px;\">" + attendanceNumber + "</td>\n" +
+                    "<td style=\"width: 54.3796%; height: 18px;\">" + attendancePer + "</td>\n" +
                     "</tr>\n" +
                     "<tr style=\"height: 18px;\">\n" +
                     "<td style=\"width: 29.3187%; height: 18px;\">Laboratory/Application</td>\n" +
-                    "<td style=\"width: 16.2409%; height: 18px;\">&nbsp;</td>\n" +
-                    "<td style=\"width: 54.3796%; height: 18px;\">&nbsp;</td>\n" +
+                    "<td style=\"width: 16.2409%; height: 18px;\">" + labNumber + "</td>\n" +
+                    "<td style=\"width: 54.3796%; height: 18px;\">" + labPer + "</td>\n" +
                     "</tr>\n" +
                     "<tr style=\"height: 18px;\">\n" +
                     "<td style=\"width: 29.3187%; height: 18px;\">Field Work</td>\n" +
-                    "<td style=\"width: 16.2409%; height: 18px;\">&nbsp;</td>\n" +
-                    "<td style=\"width: 54.3796%; height: 18px;\">&nbsp;</td>\n" +
+                    "<td style=\"width: 16.2409%; height: 18px;\">" + fieldNumber + "</td>\n" +
+                    "<td style=\"width: 54.3796%; height: 18px;\">" + fieldPer + "</td>\n" +
                     "</tr>\n" +
                     "<tr style=\"height: 18px;\">\n" +
                     "<td style=\"width: 29.3187%; height: 18px;\">Quiz/Studio Critique</td>\n" +
-                    "<td style=\"width: 16.2409%; height: 18px;\">&nbsp;</td>\n" +
-                    "<td style=\"width: 54.3796%; height: 18px;\">&nbsp;</td>\n" +
+                    "<td style=\"width: 16.2409%; height: 18px;\">" + quizNumber + "</td>\n" +
+                    "<td style=\"width: 54.3796%; height: 18px;\">" + quizPer + "</td>\n" +
                     "</tr>\n" +
                     "<tr style=\"height: 18px;\">\n" +
                     "<td style=\"width: 29.3187%; height: 18px;\">Homework/Assignment</td>\n" +
-                    "<td style=\"width: 16.2409%; height: 18px;\">&nbsp;</td>\n" +
-                    "<td style=\"width: 54.3796%; height: 18px;\">&nbsp;</td>\n" +
+                    "<td style=\"width: 16.2409%; height: 18px;\">" + hWorkNumber + "</td>\n" +
+                    "<td style=\"width: 54.3796%; height: 18px;\">" + hWorkPer + "</td>\n" +
                     "</tr>\n" +
                     "<tr style=\"height: 18px;\">\n" +
                     "<td style=\"width: 29.3187%; height: 18px;\">Presentation/Jury</td>\n" +
-                    "<td style=\"width: 16.2409%; height: 18px;\">&nbsp;</td>\n" +
-                    "<td style=\"width: 54.3796%; height: 18px;\">&nbsp;</td>\n" +
+                    "<td style=\"width: 16.2409%; height: 18px;\">" + presentNumber + "</td>\n" +
+                    "<td style=\"width: 54.3796%; height: 18px;\">" + presentPer + "</td>\n" +
                     "</tr>\n" +
                     "<tr style=\"height: 18px;\">\n" +
                     "<td style=\"width: 29.3187%; height: 18px;\">Project</td>\n" +
-                    "<td style=\"width: 16.2409%; height: 18px;\">&nbsp;</td>\n" +
-                    "<td style=\"width: 54.3796%; height: 18px;\">&nbsp;</td>\n" +
+                    "<td style=\"width: 16.2409%; height: 18px;\">" + projectNumber + "</td>\n" +
+                    "<td style=\"width: 54.3796%; height: 18px;\">" + projectPer + "</td>\n" +
                     "</tr>\n" +
                     "<tr style=\"height: 18px;\">\n" +
                     "<td style=\"width: 29.3187%; height: 18px;\">Seminar/Workshop</td>\n" +
-                    "<td style=\"width: 16.2409%; height: 18px;\">&nbsp;</td>\n" +
-                    "<td style=\"width: 54.3796%; height: 18px;\">&nbsp;</td>\n" +
+                    "<td style=\"width: 16.2409%; height: 18px;\">" + seminarNumber + "</td>\n" +
+                    "<td style=\"width: 54.3796%; height: 18px;\">" + seminarPer + "</td>\n" +
                     "</tr>\n" +
                     "<tr style=\"height: 18px;\">\n" +
                     "<td style=\"width: 29.3187%; height: 18px;\">Oral Exam</td>\n" +
-                    "<td style=\"width: 16.2409%; height: 18px;\">&nbsp;</td>\n" +
-                    "<td style=\"width: 54.3796%; height: 18px;\">&nbsp;</td>\n" +
+                    "<td style=\"width: 16.2409%; height: 18px;\">" + portNumber + "</td>\n" +
+                    "<td style=\"width: 54.3796%; height: 18px;\">" + portPer + "</td>\n" +
                     "</tr>\n" +
                     "<tr style=\"height: 18px;\">\n" +
                     "<td style=\"width: 29.3187%; height: 18px;\">Midterm</td>\n" +
-                    "<td style=\"width: 16.2409%; height: 18px;\">&nbsp;</td>\n" +
-                    "<td style=\"width: 54.3796%; height: 18px;\">&nbsp;</td>\n" +
+                    "<td style=\"width: 16.2409%; height: 18px;\">" + midtermNumber + "</td>\n" +
+                    "<td style=\"width: 54.3796%; height: 18px;\">" + midtermPer + "</td>\n" +
                     "</tr>\n" +
                     "<tr style=\"height: 18px;\">\n" +
                     "<td style=\"width: 29.3187%; height: 18px;\">Final Exam</td>\n" +
-                    "<td style=\"width: 16.2409%; height: 18px;\">&nbsp;</td>\n" +
-                    "<td style=\"width: 54.3796%; height: 18px;\">&nbsp;</td>\n" +
+                    "<td style=\"width: 16.2409%; height: 18px;\">" + finalNumber + "</td>\n" +
+                    "<td style=\"width: 54.3796%; height: 18px;\">" + finalPer + "</td>\n" +
                     "</tr>\n" +
                     "<tr style=\"height: 18px;\">\n" +
                     "<td style=\"width: 29.3187%; height: 18px;\">Total</td>\n" +
-                    "<td style=\"width: 16.2409%; height: 18px;\">&nbsp;</td>\n" +
-                    "<td style=\"width: 54.3796%; height: 18px;\">&nbsp;</td>\n" +
+                    "<td style=\"width: 16.2409%; height: 18px;\">" + araToNumber + "</td>\n" +
+                    "<td style=\"width: 54.3796%; height: 18px;\">" + araToPer + "</td>\n" +
                     "</tr>\n" +
                     "</tbody>\n" +
                     "</table>\n" +
@@ -555,75 +523,75 @@ public class DownloadURL{
                     "</tr>\n" +
                     "<tr style=\"height: 18px;\">\n" +
                     "<td style=\"width: 43.2481%; height: 18px;\">Course Hours</td>\n" +
-                    "<td style=\"width: 13.5037%; height: 18px;\">&nbsp;</td>\n" +
-                    "<td style=\"width: 13.5036%; height: 18px;\">&nbsp;</td>\n" +
-                    "<td style=\"width: 29.5621%; height: 18px;\">&nbsp;</td>\n" +
+                    "<td style=\"width: 13.5037%; height: 18px;\">" + courseHourNumber + "</td>\n" +
+                    "<td style=\"width: 13.5036%; height: 18px;\">" + courseHourDuration + "</td>\n" +
+                    "<td style=\"width: 29.5621%; height: 18px;\">" + courseHourWLoad + "</td>\n" +
                     "</tr>\n" +
                     "<tr style=\"height: 18px;\">\n" +
                     "<td style=\"width: 43.2481%; height: 18px;\">Laboratory/Application Hours</td>\n" +
-                    "<td style=\"width: 13.5037%; height: 18px;\">&nbsp;</td>\n" +
-                    "<td style=\"width: 13.5036%; height: 18px;\">&nbsp;</td>\n" +
-                    "<td style=\"width: 29.5621%; height: 18px;\">&nbsp;</td>\n" +
+                    "<td style=\"width: 13.5037%; height: 18px;\">" + labHourNumber + "</td>\n" +
+                    "<td style=\"width: 13.5036%; height: 18px;\">" + labHourDuration + "</td>\n" +
+                    "<td style=\"width: 29.5621%; height: 18px;\">" + labHourWLoad + "</td>\n" +
                     "</tr>\n" +
                     "<tr style=\"height: 18px;\">\n" +
                     "<td style=\"width: 43.2481%; height: 18px;\">Study Hours out of Class</td>\n" +
-                    "<td style=\"width: 13.5037%; height: 18px;\">&nbsp;</td>\n" +
-                    "<td style=\"width: 13.5036%; height: 18px;\">&nbsp;</td>\n" +
-                    "<td style=\"width: 29.5621%; height: 18px;\">&nbsp;</td>\n" +
+                    "<td style=\"width: 13.5037%; height: 18px;\">" + outHourNumber + "</td>\n" +
+                    "<td style=\"width: 13.5036%; height: 18px;\">" + outHourDuration + "</td>\n" +
+                    "<td style=\"width: 29.5621%; height: 18px;\">" + outHourWLoad + "</td>\n" +
                     "</tr>\n" +
                     "<tr style=\"height: 18px;\">\n" +
                     "<td style=\"width: 43.2481%; height: 18px;\">Field Work</td>\n" +
-                    "<td style=\"width: 13.5037%; height: 18px;\">&nbsp;</td>\n" +
-                    "<td style=\"width: 13.5036%; height: 18px;\">&nbsp;</td>\n" +
-                    "<td style=\"width: 29.5621%; height: 18px;\">&nbsp;</td>\n" +
+                    "<td style=\"width: 13.5037%; height: 18px;\">" + fieldworkHourNumber + "</td>\n" +
+                    "<td style=\"width: 13.5036%; height: 18px;\">" + fieldworkHourDuration + "</td>\n" +
+                    "<td style=\"width: 29.5621%; height: 18px;\">" + fieldworkHourWLoad + "</td>\n" +
                     "</tr>\n" +
                     "<tr style=\"height: 18px;\">\n" +
                     "<td style=\"width: 43.2481%; height: 18px;\">Quiz/Studio Critique</td>\n" +
-                    "<td style=\"width: 13.5037%; height: 18px;\">&nbsp;</td>\n" +
-                    "<td style=\"width: 13.5036%; height: 18px;\">&nbsp;</td>\n" +
-                    "<td style=\"width: 29.5621%; height: 18px;\">&nbsp;</td>\n" +
+                    "<td style=\"width: 13.5037%; height: 18px;\">" + quizHourNumber + "</td>\n" +
+                    "<td style=\"width: 13.5036%; height: 18px;\">" + quizHourDuration + "</td>\n" +
+                    "<td style=\"width: 29.5621%; height: 18px;\">" + quizHourWLoad + "</td>\n" +
                     "</tr>\n" +
                     "<tr style=\"height: 18px;\">\n" +
                     "<td style=\"width: 43.2481%; height: 18px;\">Homework/Assignments</td>\n" +
-                    "<td style=\"width: 13.5037%; height: 18px;\">&nbsp;</td>\n" +
-                    "<td style=\"width: 13.5036%; height: 18px;\">&nbsp;</td>\n" +
-                    "<td style=\"width: 29.5621%; height: 18px;\">&nbsp;</td>\n" +
+                    "<td style=\"width: 13.5037%; height: 18px;\">" + hWorkHourNumber + "</td>\n" +
+                    "<td style=\"width: 13.5036%; height: 18px;\">" + hWorkHourDuration + "</td>\n" +
+                    "<td style=\"width: 29.5621%; height: 18px;\">" + hWorkHourWLoad + "</td>\n" +
                     "</tr>\n" +
                     "<tr style=\"height: 18px;\">\n" +
                     "<td style=\"width: 43.2481%; height: 18px;\">Presentation/Jury</td>\n" +
-                    "<td style=\"width: 13.5037%; height: 18px;\">&nbsp;</td>\n" +
-                    "<td style=\"width: 13.5036%; height: 18px;\">&nbsp;</td>\n" +
-                    "<td style=\"width: 29.5621%; height: 18px;\">&nbsp;</td>\n" +
+                    "<td style=\"width: 13.5037%; height: 18px;\">" + presentHourNumber + "</td>\n" +
+                    "<td style=\"width: 13.5036%; height: 18px;\">" + presentHourDuration + "</td>\n" +
+                    "<td style=\"width: 29.5621%; height: 18px;\">" + presentHourWLoad + "</td>\n" +
                     "</tr>\n" +
                     "<tr style=\"height: 18px;\">\n" +
                     "<td style=\"width: 43.2481%; height: 18px;\">Project</td>\n" +
-                    "<td style=\"width: 13.5037%; height: 18px;\">&nbsp;</td>\n" +
-                    "<td style=\"width: 13.5036%; height: 18px;\">&nbsp;</td>\n" +
-                    "<td style=\"width: 29.5621%; height: 18px;\">&nbsp;</td>\n" +
+                    "<td style=\"width: 13.5037%; height: 18px;\">" + projectHourNumber + "</td>\n" +
+                    "<td style=\"width: 13.5036%; height: 18px;\">" + projectHourDuration + "</td>\n" +
+                    "<td style=\"width: 29.5621%; height: 18px;\">" + projectHourWLoad + "</td>\n" +
                     "</tr>\n" +
                     "<tr style=\"height: 18px;\">\n" +
                     "<td style=\"width: 43.2481%; height: 18px;\">Seminar/Workshop</td>\n" +
-                    "<td style=\"width: 13.5037%; height: 18px;\">&nbsp;</td>\n" +
-                    "<td style=\"width: 13.5036%; height: 18px;\">&nbsp;</td>\n" +
-                    "<td style=\"width: 29.5621%; height: 18px;\">&nbsp;</td>\n" +
+                    "<td style=\"width: 13.5037%; height: 18px;\">" + seminarHourNumber + "</td>\n" +
+                    "<td style=\"width: 13.5036%; height: 18px;\">" + seminarHourDuration + "</td>\n" +
+                    "<td style=\"width: 29.5621%; height: 18px;\">" + seminarHourWLoad + "</td>\n" +
                     "</tr>\n" +
                     "<tr>\n" +
                     "<td style=\"width: 43.2481%;\">Oral Exam</td>\n" +
-                    "<td style=\"width: 13.5037%;\">&nbsp;</td>\n" +
-                    "<td style=\"width: 13.5036%;\">&nbsp;</td>\n" +
-                    "<td style=\"width: 29.5621%;\">&nbsp;</td>\n" +
+                    "<td style=\"width: 13.5037%;\">" + portHourNumber + " </td>\n" +
+                    "<td style=\"width: 13.5036%;\">" + portHourDuration + "</td>\n" +
+                    "<td style=\"width: 29.5621%;\">" + portHourWLoad + "</td>\n" +
                     "</tr>\n" +
                     "<tr>\n" +
                     "<td style=\"width: 43.2481%;\">Midterm</td>\n" +
-                    "<td style=\"width: 13.5037%;\">&nbsp;</td>\n" +
-                    "<td style=\"width: 13.5036%;\">&nbsp;</td>\n" +
-                    "<td style=\"width: 29.5621%;\">&nbsp;</td>\n" +
+                    "<td style=\"width: 13.5037%;\">" + midtermHourNumber + "</td>\n" +
+                    "<td style=\"width: 13.5036%;\">" + midtermHourDuration + "</td>\n" +
+                    "<td style=\"width: 29.5621%;\">" + midtermHourWLoad + "</td>\n" +
                     "</tr>\n" +
                     "<tr>\n" +
                     "<td style=\"width: 43.2481%;\">Final Exam</td>\n" +
-                    "<td style=\"width: 13.5037%;\">&nbsp;</td>\n" +
-                    "<td style=\"width: 13.5036%;\">&nbsp;</td>\n" +
-                    "<td style=\"width: 29.5621%;\">&nbsp;</td>\n" +
+                    "<td style=\"width: 13.5037%;\">" + finalHourNumber + "</td>\n" +
+                    "<td style=\"width: 13.5036%;\">" + finalHourDuration + "</td>\n" +
+                    "<td style=\"width: 29.5621%;\">" + finalHourWLoad + "</td>\n" +
                     "</tr>\n" +
                     "<tr>\n" +
                     "<td style=\"width: 43.2481%;\">&nbsp;</td>\n" +
@@ -631,7 +599,7 @@ public class DownloadURL{
                     "<td class=\"td1\" style=\"width: 13.5036%;\" valign=\"top\">\n" +
                     "<p class=\"p1\"><strong>Total<span class=\"Apple-converted-space\">&nbsp;</span></strong></p>\n" +
                     "</td>\n" +
-                    "<td style=\"width: 29.5621%;\">&nbsp;</td>\n" +
+                    "<td style=\"width: 29.5621%;\">" + totalWLoad + "</td>\n" +
                     "</tr>\n" +
                     "</tbody>\n" +
                     "</table>");
