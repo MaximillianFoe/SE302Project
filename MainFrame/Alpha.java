@@ -19,9 +19,9 @@ public class Alpha {
         selectionText.setBounds(150,155,140,20); // Uyarı yazısının bölgesini ve boyutunu yazıyoruz.
         ButtonGroup languageSelection = new ButtonGroup();
         JRadioButton turkishLanguage = new JRadioButton("TR", true);
-        turkishLanguage.setBounds(130,175,45,20);
+        turkishLanguage.setBounds(130,175,50,20);
         JRadioButton englishLanguage = new JRadioButton("EN", false);
-        englishLanguage.setBounds(180,175,45,20);
+        englishLanguage.setBounds(180,175,50,20);
         languageSelection.add(turkishLanguage);
         languageSelection.add(englishLanguage);
 

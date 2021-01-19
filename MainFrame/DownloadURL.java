@@ -192,9 +192,9 @@ public class DownloadURL {
 
         String courseCodeForHTML = courseCode.replace("+", " "); // Mükemmel bir dönüşüm yaptık burada.
 
-        if (prefLanguage == "en"){
+        if (prefLanguage.equals("en")){
         try {
-            FileWriter downloadedWriter = new FileWriter(courseCodeForHTML + " " + prefLanguage.toUpperCase() +".html");
+            FileWriter downloadedWriter = new FileWriter(courseCodeForHTML + " " + prefLanguage.toUpperCase() + ".html");
             downloadedWriter.write("<p style=\"text-align: center;\"><strong>Izmir University of Economics Course Outline Form</strong></p>\n" +
                     "<table style=\"width: 100%; border-collapse: collapse; border-style: hidden;\" border=\"1\">\n" +
                     "<tbody>\n" +
@@ -645,7 +645,7 @@ public class DownloadURL {
             JOptionPane.showMessageDialog(messageWindow, "Something went wrong! Error Code: " + e);
         }
         }
-        if (prefLanguage == "tr"){
+        if (prefLanguage.equals("tr")){
             try {
                 FileWriter downloadedWriter = new FileWriter(courseCodeForHTML + " " + prefLanguage.toUpperCase() + ".html");
                 downloadedWriter.write("<p style=\"text-align: center;\"><strong>İzmir Ekonomi Üniversitesi Ders Formu</strong></p>\n" +
