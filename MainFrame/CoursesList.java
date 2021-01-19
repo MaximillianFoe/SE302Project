@@ -12,6 +12,8 @@ public class CoursesList {
         JFrame messageWindow = new JFrame();
         courseList.setSize(400,510);
         courseList.setLayout(null);
+        JLabel doubleClickWarning = new JLabel("Double Click to Open File From List:"); //Ekrandaki yerini sonra belirleyeceğiz.
+        doubleClickWarning.setBounds(5,0,400,25); // Uyarı yazısının bölgesini ve boyutunu yazıyoruz.
         DefaultListModel<String> myCourseList = new DefaultListModel<>();
 
         try {
@@ -27,7 +29,7 @@ public class CoursesList {
             JOptionPane.showMessageDialog(messageWindow, "Something went wrong! Error Code: " + e);
         }
         JList<String> finalShownList = new JList<>(myCourseList);
-        finalShownList.setBounds(0,0, 400,510);
+        finalShownList.setBounds(0,25, 400,485);
 
         finalShownList.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
@@ -44,6 +46,7 @@ public class CoursesList {
         });
 
         courseList.add(finalShownList);
+        courseList.add(doubleClickWarning);
         courseList.setTitle("Syllabus Agent v1.0 - Downloaded List");
         courseList.setLocation(800, 600);
         courseList.setVisible(true);
