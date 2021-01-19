@@ -9,7 +9,7 @@ public class Alpha {
         JFrame Syllabus = new JFrame(); // Ana pencereyi oluşturuyoruz.
         JButton Download = new JButton("Download Course"); // Download butonunu oluşturuyoruz.
         JButton CourseDatabase = new JButton("Downloaded List"); // İndirilenleri görüntülemek için buton oluşturuyoruz.
-        Syllabus.setSize(300,409); // Ana pencerenin boyutlarını belirliyoruz.
+        Syllabus.setSize(300,410); // Ana pencerenin boyutlarını belirliyoruz.
         Download.setBounds(130,245,140, 35); // Download butonu için koordinatlar.
         CourseDatabase.setBounds(130,288,140, 35); // İndirilenleri görüntülemek için koordinatlar.
         Syllabus.setLayout(null); // Layout ayarlarını şimdilik boş bıraktık.

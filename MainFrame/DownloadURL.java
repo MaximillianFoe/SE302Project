@@ -645,13 +645,7 @@ public class DownloadURL{
                     "</table>");
             downloadedWriter.close();
         } catch (IOException e) {
-            JOptionPane.showMessageDialog(messageWindow, "Something went wrong! Error Code:" + e);
+            JOptionPane.showMessageDialog(messageWindow, "Something went wrong! Error Code: " + e);
         }
-
-        BufferedWriter addCourseToDatabase = new BufferedWriter( new FileWriter("savedCourses.txt",true) );
-        addCourseToDatabase.write(courseCodeForHTML);
-        addCourseToDatabase.flush();
-        addCourseToDatabase.newLine();
-        addCourseToDatabase.close();
     }
 }

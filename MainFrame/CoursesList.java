@@ -1,21 +1,33 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import javax.swing.*;
+import java.io.File;
+import java.io.FilenameFilter;
 
 public class CoursesList {
     public static void main(String[] args) {
-        BufferedReader reader;
+        JFrame courseList = new JFrame();
+        JFrame messageWindow = new JFrame();
+        courseList.setSize(300,410);
+        courseList.setLayout(null);
+        DefaultListModel<String> myCourseList = new DefaultListModel<>();
+
         try {
-            reader = new BufferedReader(new FileReader(
-                    "savedCourses.txt"));
-            String line = reader.readLine();
-            while (line != null) {
-                System.out.println(line);
-                line = reader.readLine();
+            File courseFolder = new File("./");
+
+            FilenameFilter filter = (f, name) -> {
+                return name.endsWith(".html");
+            };
+            File[] files = courseFolder.listFiles(filter);
+            assert files != null;
+            for (File file : files) {
+                myCourseList.addElement(file.getName());
             }
-            reader.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(messageWindow, "Something went wrong! Error Code: " + e);
         }
-}
+        JList<String> finalShownList = new JList<>(myCourseList);
+        finalShownList.setBounds(100,100, 75,75);
+        courseList.add(finalShownList);
+        courseList.setTitle("Syllabus Agent v1.0 - Downloaded List");
+        courseList.setVisible(true);
+    }
 }
