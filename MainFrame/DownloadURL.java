@@ -6,15 +6,13 @@ import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 import javax.swing.*;
-import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.File; // HTML dosyası yaratmak için en basit özelliği kullanıyoruz.
 import java.security.KeyManagementException; //SSL için.
 import java.security.NoSuchAlgorithmException; //SSL için.
 import java.security.cert.X509Certificate; //SSL için.
 
-class SSLHelper{ // Thanks to Zemian Deng to solve this SSL problem, that was pain in the ass! Love you mate! (https://dzone.com/articles/how-setup-custom)
+class SSLHelper { // Thanks to Zemian Deng to solve this SSL problem, that was pain in the ass! Love you mate! (https://dzone.com/articles/how-setup-custom)
 
     static public Connection getConnection(String url){
         return Jsoup.connect(url).sslSocketFactory(SSLHelper.socketFactory());
@@ -36,19 +34,18 @@ class SSLHelper{ // Thanks to Zemian Deng to solve this SSL problem, that was pa
         try {
             SSLContext sslContext = SSLContext.getInstance("SSL");
             sslContext.init(null, trustAllCerts, new java.security.SecureRandom());
-            SSLSocketFactory result = sslContext.getSocketFactory();
 
-            return result;
+            return sslContext.getSocketFactory();
         } catch (NoSuchAlgorithmException | KeyManagementException e) {
             throw new RuntimeException("Failed to create a SSL socket factory", e);
         }
     }
 }
 
-public class DownloadURL{
+public class DownloadURL {
     public static void main(String Faculty, String courseCode, String prefLanguage) throws IOException {
         String courseSite = "https://" + Faculty + ".ieu.edu.tr/" + prefLanguage + "/syllabus/type/read/id/" + courseCode; // Sitenin adresi belirli; facultyName ve courseCode kısmını kullanıcı belirliyor.
-        Document sitePart = SSLHelper.getConnection(courseSite).userAgent("Syllabus Agent").get();; // Siteden verileri çekiyoruz.
+        Document sitePart = SSLHelper.getConnection(courseSite).userAgent("Syllabus Agent").get(); // Siteden verileri çekiyoruz.
 
         JFrame messageWindow = new JFrame(); // Ana pencereyi oluşturuyoruz.
 
@@ -196,7 +193,6 @@ public class DownloadURL{
         String courseCodeForHTML = courseCode.replace("+", " "); // Mükemmel bir dönüşüm yaptık burada.
 
         try {
-            File downloadedFile = new File(courseCode + ".html");
             FileWriter downloadedWriter = new FileWriter(courseCode + ".html");
             downloadedWriter.write("<p style=\"text-align: center;\"><strong>Izmir University of Economics Course Outline Form</strong></p>\n" +
                     "<table style=\"width: 100%; border-collapse: collapse; border-style: hidden;\" border=\"1\">\n" +

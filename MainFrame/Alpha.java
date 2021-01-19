@@ -1,3 +1,4 @@
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*; // GUI için Swing kütüphanesini tamamen ekledik.
@@ -9,7 +10,7 @@ public class Alpha {
         JFrame Syllabus = new JFrame(); // Ana pencereyi oluşturuyoruz.
         JButton Download = new JButton("Download Course"); // Download butonunu oluşturuyoruz.
         JButton CourseDatabase = new JButton("Downloaded List"); // İndirilenleri görüntülemek için buton oluşturuyoruz.
-        Syllabus.setSize(300,410); // Ana pencerenin boyutlarını belirliyoruz.
+        Syllabus.setSize(300,430); // Ana pencerenin boyutlarını belirliyoruz.
         Download.setBounds(130,245,140, 35); // Download butonu için koordinatlar.
         CourseDatabase.setBounds(130,288,140, 35); // İndirilenleri görüntülemek için koordinatlar.
         Syllabus.setLayout(null); // Layout ayarlarını şimdilik boş bıraktık.
@@ -56,18 +57,17 @@ public class Alpha {
         Syllabus.add(englishLanguage); // İngilizce dil seçeneği.
         Syllabus.add(selectionText); // Dil seçimi uyarısı.
 
-        Image ieuLogo = null;
         try {
-            URL schLogo = new URL("http://www.ieu.edu.tr/images/logoyeni_tr.png"); // Okul logosunun adresi.
-            ieuLogo = ImageIO.read(schLogo);
-        } catch (IOException DD) { // URL'de hata olursa uygulama şimdilik çalışmıyor.
-            DD.printStackTrace();
+            String myLogo = "http://stdhomes.ieu.edu.tr/cihancoban/SecondaryIEULogo.jpg"; // Okul logosunun adresi.
+            URL schLogo = new URL(myLogo);
+            BufferedImage ieuLogo = ImageIO.read(schLogo);
+            JLabel logoCentered = new JLabel(new ImageIcon(ieuLogo)); // Logo için gizli kutu ayarladık.
+            logoCentered.setBounds(13,0,256,109); // Logonun hizası ve boyutu.
+            Syllabus.getContentPane().add(logoCentered); // Logoyu ekledik.
+        } catch (IOException DD) {
+            JOptionPane.showMessageDialog(Syllabus, "Error Code: " + DD);
         }
 
-        assert ieuLogo != null;
-        JLabel logoCentered = new JLabel(new ImageIcon(ieuLogo)); // Logo için gizli kutu ayarladık.
-        logoCentered.setBounds(60,15,180,109); // Logonun hizası ve boyutu.
-        Syllabus.add(logoCentered); // Logoyu ekledik.
 
         Download.addActionListener(pressDownloadButton -> {
             String selectedFaculty = FacultyList.getSelectedValue();
@@ -97,6 +97,8 @@ public class Alpha {
         });
 
         Syllabus.setTitle("Syllabus Agent v1.0");
+        Syllabus.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        Syllabus.setLocation(800, 600);
         Syllabus.setVisible(true); // Pencereyi görünür kıldık.
     }
 }
