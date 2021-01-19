@@ -6,6 +6,6 @@
 - Kaan Altıntaş
 - Selin Çiftçi
 
-# Where is Wiki Page?:
-**Up there but if you still couldn't find; here's a link:**
+# Wiki Page:
+**Up there in the menu you can access Wiki page but if you still couldn't find; here's a link:**
 [Wiki Page with Help File](https://github.com/MaximillianFoe/SE302Project/wiki)
