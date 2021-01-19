@@ -62,12 +62,11 @@ public class Alpha {
             URL schLogo = new URL(myLogo);
             BufferedImage ieuLogo = ImageIO.read(schLogo);
             JLabel logoCentered = new JLabel(new ImageIcon(ieuLogo)); // Logo için gizli kutu ayarladık.
-            logoCentered.setBounds(13,0,256,109); // Logonun hizası ve boyutu.
+            logoCentered.setBounds(0,0,300,109); // Logonun hizası ve boyutu.
             Syllabus.getContentPane().add(logoCentered); // Logoyu ekledik.
         } catch (IOException DD) {
             JOptionPane.showMessageDialog(Syllabus, "Error Code: " + DD);
         }
-
 
         Download.addActionListener(pressDownloadButton -> {
             String selectedFaculty = FacultyList.getSelectedValue();

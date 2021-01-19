@@ -192,8 +192,9 @@ public class DownloadURL {
 
         String courseCodeForHTML = courseCode.replace("+", " "); // Mükemmel bir dönüşüm yaptık burada.
 
+        if (prefLanguage == "en"){
         try {
-            FileWriter downloadedWriter = new FileWriter(courseCode + ".html");
+            FileWriter downloadedWriter = new FileWriter(courseCodeForHTML + " " + prefLanguage.toUpperCase() +".html");
             downloadedWriter.write("<p style=\"text-align: center;\"><strong>Izmir University of Economics Course Outline Form</strong></p>\n" +
                     "<table style=\"width: 100%; border-collapse: collapse; border-style: hidden;\" border=\"1\">\n" +
                     "<tbody>\n" +
@@ -236,8 +237,8 @@ public class DownloadURL {
                     "<tr style=\"height: 18px;\">\n" +
                     "<td style=\"width: 16.6667%; height: 18px;\"><strong>Code</strong></td>\n" +
                     "<td style=\"width: 16.6667%; height: 18px;\"><strong>Term</strong></td>\n" +
-                    "<td style=\"width: 16.6667%; height: 18px;\"><strong>Theory</strong></td>\n" +
-                    "<td style=\"width: 16.6667%; height: 18px;\"><strong>Application/Lab</strong></td>\n" +
+                    "<td style=\"width: 16.6667%; height: 18px;\"><strong>Theory (Hours/Week)</strong></td>\n" +
+                    "<td style=\"width: 16.6667%; height: 18px;\"><strong>Application/Lab (Hours/Week)</strong></td>\n" +
                     "<td style=\"width: 16.6667%; height: 18px;\"><strong>Local Credits</strong></td>\n" +
                     "<td style=\"width: 16.6667%; height: 18px;\"><strong>ECTS</strong></td>\n" +
                     "</tr>\n" +
@@ -459,7 +460,7 @@ public class DownloadURL {
                     "<p class=\"p1\"><strong>Number<span class=\"Apple-converted-space\">&nbsp;</span></strong></p>\n" +
                     "</td>\n" +
                     "<td class=\"td1\" style=\"width: 54.3796%; height: 18px;\" valign=\"top\">\n" +
-                    "<p class=\"p1\"><strong>Weigthing<span class=\"Apple-converted-space\">&nbsp;</span></strong></p>\n" +
+                    "<p class=\"p1\"><strong>Weigthing %<span class=\"Apple-converted-space\">&nbsp;</span></strong></p>\n" +
                     "</td>\n" +
                     "</tr>\n" +
                     "<tr style=\"height: 18px;\">\n" +
@@ -552,7 +553,7 @@ public class DownloadURL {
                     "<tr style=\"height: 36px;\">\n" +
                     "<td style=\"width: 43.2481%; height: 36px;\"><strong>Semester Activities</strong></td>\n" +
                     "<td style=\"width: 13.5037%; height: 36px;\"><strong>Number</strong></td>\n" +
-                    "<td style=\"width: 13.5036%; height: 36px;\"><strong>Duration</strong></td>\n" +
+                    "<td style=\"width: 13.5036%; height: 36px;\"><strong>Duration (Hours)</strong></td>\n" +
                     "<td class=\"td1\" style=\"width: 29.5621%; height: 36px;\" valign=\"top\">\n" +
                     "<p class=\"p1\"><strong>Workload<span class=\"Apple-converted-space\">&nbsp;</span></strong></p>\n" +
                     "</td>\n" +
@@ -642,6 +643,460 @@ public class DownloadURL {
             downloadedWriter.close();
         } catch (IOException e) {
             JOptionPane.showMessageDialog(messageWindow, "Something went wrong! Error Code: " + e);
+        }
+        }
+        if (prefLanguage == "tr"){
+            try {
+                FileWriter downloadedWriter = new FileWriter(courseCodeForHTML + " " + prefLanguage.toUpperCase() + ".html");
+                downloadedWriter.write("<p style=\"text-align: center;\"><strong>İzmir Ekonomi Üniversitesi Ders Formu</strong></p>\n" +
+                        "<table style=\"width: 100%; border-collapse: collapse; border-style: hidden;\" border=\"1\">\n" +
+                        "<tbody>\n" +
+                        "<tr>\n" +
+                        "<td style=\"width: 100%;\">&nbsp;</td>\n" +
+                        "</tr>\n" +
+                        "</tbody>\n" +
+                        "</table>\n" +
+                        "<table style=\"height: 35px; width: 100%; border-collapse: collapse; background-color: #ffa500; margin-left: auto; margin-right: auto;\" border=\"1\">\n" +
+                        "<tbody>\n" +
+                        "<tr style=\"height: 18px;\">\n" +
+                        "<td style=\"width: 100%; height: 18px;\"><strong>1. Genel Bilgiler</strong></td>\n" +
+                        "</tr>\n" +
+                        "</tbody>\n" +
+                        "</table>\n" +
+                        "<table style=\"height: 18px; width: 100%; border-collapse: collapse; border-style: hidden;\" border=\"1\">\n" +
+                        "<tbody>\n" +
+                        "<tr style=\"height: 18px;\">\n" +
+                        "<td style=\"width: 100%; height: 18px;\">&nbsp;</td>\n" +
+                        "</tr>\n" +
+                        "</tbody>\n" +
+                        "</table>\n" +
+                        "<table style=\"border-collapse: collapse; width: 100%; height: 18px;\" border=\"1\">\n" +
+                        "<tbody>\n" +
+                        "<tr style=\"height: 18px;\">\n" +
+                        "<td style=\"width: 50%; height: 18px;\"><strong>Dersin Adı</strong></td>\n" +
+                        "<td style=\"width: 50%; height: 18px;\">" + courseName + "</td>\n" +
+                        "</tr>\n" +
+                        "</tbody>\n" +
+                        "</table>\n" +
+                        "<table style=\"height: 18px; width: 100%; border-collapse: collapse; border-style: hidden;\" border=\"1\">\n" +
+                        "<tbody>\n" +
+                        "<tr style=\"height: 18px;\">\n" +
+                        "<td style=\"width: 100%; height: 18px;\">&nbsp;</td>\n" +
+                        "</tr>\n" +
+                        "</tbody>\n" +
+                        "</table>\n" +
+                        "<table style=\"border-collapse: collapse; width: 100%; height: 36px;\" border=\"1\">\n" +
+                        "<tbody>\n" +
+                        "<tr style=\"height: 18px;\">\n" +
+                        "<td style=\"width: 16.6667%; height: 18px;\"><strong>Kodu</strong></td>\n" +
+                        "<td style=\"width: 16.6667%; height: 18px;\"><strong>Yarıyıl</strong></td>\n" +
+                        "<td style=\"width: 16.6667%; height: 18px;\"><strong>Teori (Saat/Hafta)</strong></td>\n" +
+                        "<td style=\"width: 16.6667%; height: 18px;\"><strong>Uygulama/Lab (Saat/Hafta)</strong></td>\n" +
+                        "<td style=\"width: 16.6667%; height: 18px;\"><strong>Yerel Kredi</strong></td>\n" +
+                        "<td style=\"width: 16.6667%; height: 18px;\"><strong>AKTS</strong></td>\n" +
+                        "</tr>\n" +
+                        "<tr style=\"height: 18px;\">\n" +
+                        "<td style=\"width: 16.6667%; height: 18px;\">" + courseCodeForHTML + "</td>\n" +
+                        "<td style=\"width: 16.6667%; height: 18px;\">" + termDate + "</td>\n" +
+                        "<td style=\"width: 16.6667%; height: 18px;\">" + theoryTime + "</td>\n" +
+                        "<td style=\"width: 16.6667%; height: 18px;\">" + labTime + "</td>\n" +
+                        "<td style=\"width: 16.6667%; height: 18px;\">" + localCredits + "</td>\n" +
+                        "<td style=\"width: 16.6667%; height: 18px;\">" + ectsCredits + "</td>\n" +
+                        "</tr>\n" +
+                        "</tbody>\n" +
+                        "</table>\n" +
+                        "<table style=\"width: 100%; border-collapse: collapse; border-style: hidden;\" border=\"1\">\n" +
+                        "<tbody>\n" +
+                        "<tr>\n" +
+                        "<td style=\"width: 100%;\">&nbsp;</td>\n" +
+                        "</tr>\n" +
+                        "</tbody>\n" +
+                        "</table>\n" +
+                        "<table style=\"border-collapse: collapse; width: 100%; height: 72px;\" border=\"1\">\n" +
+                        "<tbody>\n" +
+                        "<tr style=\"height: 18px;\">\n" +
+                        "<td style=\"width: 50%; height: 18px;\"><strong>Ön-Koşul(lar)</strong></td>\n" +
+                        "<td style=\"width: 50%; height: 18px;\">" + preRequisites + "</td>\n" +
+                        "</tr>\n" +
+                        "<tr style=\"height: 18px;\">\n" +
+                        "<td style=\"width: 50%; height: 18px;\"><strong>Dersin Dili</strong></td>\n" +
+                        "<td style=\"width: 50%; height: 18px;\">" + courseLanguage + "</td>\n" +
+                        "</tr>\n" +
+                        "<tr style=\"height: 18px;\">\n" +
+                        "<td style=\"width: 50%; height: 18px;\"><strong>Dersin Türü</strong></td>\n" +
+                        "<td style=\"width: 50%; height: 18px;\">" + courseType + "</td>\n" +
+                        "</tr>\n" +
+                        "<tr style=\"height: 18px;\">\n" +
+                        "<td style=\"width: 50%; height: 18px;\"><strong>Dersin Düzeyi</strong></td>\n" +
+                        "<td style=\"width: 50%; height: 18px;\">" + courseLevel + "</td>\n" +
+                        "</tr>\n" +
+                        "</tbody>\n" +
+                        "</table>\n" +
+                        "<table style=\"width: 100%; border-collapse: collapse; border-style: hidden;\" border=\"1\">\n" +
+                        "<tbody>\n" +
+                        "<tr>\n" +
+                        "<td style=\"width: 100%;\">&nbsp;</td>\n" +
+                        "</tr>\n" +
+                        "</tbody>\n" +
+                        "</table>\n" +
+                        "<table style=\"border-collapse: collapse; width: 100%;\" border=\"1\">\n" +
+                        "<tbody>\n" +
+                        "<tr>\n" +
+                        "<td style=\"width: 50%;\"><strong>Dersin Koordinatörü</strong></td>\n" +
+                        "<td style=\"width: 50%;\">" + courseCoordinator + "</td>\n" +
+                        "</tr>\n" +
+                        "<tr>\n" +
+                        "<td style=\"width: 50%;\"><strong>Öğretim Eleman(lar)ı</strong></td>\n" +
+                        "<td style=\"width: 50%;\">" + courseLecturer + "</td>\n" +
+                        "</tr>\n" +
+                        "<tr>\n" +
+                        "<td style=\"width: 50%;\"><strong>Yardımcı(ları)</strong></td>\n" +
+                        "<td style=\"width: 50%;\">&nbsp;</td>\n" +
+                        "</tr>\n" +
+                        "</tbody>\n" +
+                        "</table>\n" +
+                        "<table style=\"width: 100%; border-collapse: collapse; border-style: hidden;\" border=\"1\">\n" +
+                        "<tbody>\n" +
+                        "<tr>\n" +
+                        "<td style=\"width: 100%;\">&nbsp;</td>\n" +
+                        "</tr>\n" +
+                        "</tbody>\n" +
+                        "</table>\n" +
+                        "<table style=\"border-collapse: collapse; width: 100%;\" border=\"1\">\n" +
+                        "<tbody>\n" +
+                        "<tr>\n" +
+                        "<td style=\"width: 50%;\"><strong>Dersin Amacı</strong></td>\n" +
+                        "<td style=\"width: 50%;\">&nbsp;</td>\n" +
+                        "</tr>\n" +
+                        "<tr>\n" +
+                        "<td style=\"width: 50%;\"><strong>Öğrenme Çıktıları</strong></td>\n" +
+                        "<td style=\"width: 50%;\">" + courseOutcomes + "</td>\n" +
+                        "</tr>\n" +
+                        "<tr>\n" +
+                        "<td style=\"width: 50%;\"><strong>Ders Tanımı</strong></td>\n" +
+                        "<td style=\"width: 50%;\">&nbsp;</td>\n" +
+                        "</tr>\n" +
+                        "</tbody>\n" +
+                        "</table>\n" +
+                        "<table style=\"width: 100%; border-collapse: collapse; border-style: hidden;\" border=\"1\">\n" +
+                        "<tbody>\n" +
+                        "<tr>\n" +
+                        "<td style=\"width: 100%;\">\n" +
+                        "<table style=\"width: 100%; border-collapse: collapse; border-style: hidden;\" border=\"1\">\n" +
+                        "<tbody>\n" +
+                        "<tr>\n" +
+                        "<td style=\"width: 100%;\">&nbsp;</td>\n" +
+                        "</tr>\n" +
+                        "</tbody>\n" +
+                        "</table>\n" +
+                        "<table style=\"height: 35px; width: 100%; border-collapse: collapse; background-color: #ffa500;\" border=\"1\">\n" +
+                        "<tbody>\n" +
+                        "<tr style=\"height: 18px;\">\n" +
+                        "<td style=\"width: 100%; height: 18px;\"><strong>2. Haftalık Konular ve İlgili Ön Hazırlık Çalışmaları</strong></td>\n" +
+                        "</tr>\n" +
+                        "</tbody>\n" +
+                        "</table>\n" +
+                        "<table style=\"width: 100%; border-collapse: collapse; border-style: hidden;\" border=\"1\">\n" +
+                        "<tbody>\n" +
+                        "<tr>\n" +
+                        "<td style=\"width: 100%;\">&nbsp;</td>\n" +
+                        "</tr>\n" +
+                        "</tbody>\n" +
+                        "</table>\n" +
+                        "</td>\n" +
+                        "</tr>\n" +
+                        "</tbody>\n" +
+                        "</table>\n" + "<table style=\"border-collapse: collapse; width: 100%; height: 306px;\" border=\"1\">\n" +
+                        "<tbody>\n" +
+                        "<tr style=\"height: 18px;\">\n" +
+                        "<td style=\"width: 10.523%; height: 18px;\"><strong>Hafta &amp; Konular &amp; Ön Hazırlık</strong></td>\n" +
+                        "</tr>\n" +
+                        "<tr style=\"height: 18px;\">\n" +
+                        "<td style=\"width: 10.523%; height: 18px;\">" + courseWeeks[1] + "</td>\n" +
+                        "</tr>\n" +
+                        "<tr style=\"height: 18px;\">\n" +
+                        "<td style=\"width: 10.523%; height: 18px;\">" + courseWeeks[2] + "</td>\n" +
+                        "</tr>\n" +
+                        "<tr style=\"height: 18px;\">\n" +
+                        "<td style=\"width: 10.523%; height: 18px;\">" + courseWeeks[3] + "</td>\n" +
+                        "</tr>\n" +
+                        "<tr style=\"height: 18px;\">\n" +
+                        "<td style=\"width: 10.523%; height: 18px;\">" + courseWeeks[4] + "</td>\n" +
+                        "</tr>\n" +
+                        "<tr style=\"height: 18px;\">\n" +
+                        "<td style=\"width: 10.523%; height: 18px;\">" + courseWeeks[5] + "</td>\n" +
+                        "</tr>\n" +
+                        "<tr style=\"height: 18px;\">\n" +
+                        "<td style=\"width: 10.523%; height: 18px;\">" + courseWeeks[6] + "</td>\n" +
+                        "</tr>\n" +
+                        "<tr style=\"height: 18px;\">\n" +
+                        "<td style=\"width: 10.523%; height: 18px;\">" + courseWeeks[7] + "</td>\n" +
+                        "</tr>\n" +
+                        "<tr style=\"height: 18px;\">\n" +
+                        "<td style=\"width: 10.523%; height: 18px;\">" + courseWeeks[8] + "</td>\n" +
+                        "</tr>\n" +
+                        "<tr style=\"height: 18px;\">\n" +
+                        "<td style=\"width: 10.523%; height: 18px;\">" + courseWeeks[9] + "</td>\n" +
+                        "</tr>\n" +
+                        "<tr style=\"height: 18px;\">\n" +
+                        "<td style=\"width: 10.523%; height: 18px;\">" + courseWeeks[10] + "</td>\n" +
+                        "</tr>\n" +
+                        "<tr style=\"height: 18px;\">\n" +
+                        "<td style=\"width: 10.523%; height: 18px;\">" + courseWeeks[11] + "</td>\n" +
+                        "</tr>\n" +
+                        "<tr style=\"height: 18px;\">\n" +
+                        "<td style=\"width: 10.523%; height: 18px;\">" + courseWeeks[12] + "</td>\n" +
+                        "</tr>\n" +
+                        "<tr style=\"height: 18px;\">\n" +
+                        "<td style=\"width: 10.523%; height: 18px;\">" + courseWeeks[13] + "</td>\n" +
+                        "</tr>\n" +
+                        "<tr style=\"height: 18px;\">\n" +
+                        "<td style=\"width: 10.523%; height: 18px;\">" + courseWeeks[14] + "</td>\n" +
+                        "</tr>\n" +
+                        "<tr style=\"height: 18px;\">\n" +
+                        "<td style=\"width: 10.523%; height: 18px;\">" + courseWeeks[15] + "</td>\n" +
+                        "</tr>\n" +
+                        "<tr style=\"height: 18px;\">\n" +
+                        "<td style=\"width: 10.523%; height: 18px;\">" + courseWeeks[16] + "</td>\n" +
+                        "</tr>\n" +
+                        "</tbody>\n" +
+                        "</table>\n" +
+                        "<table style=\"width: 100%; border-collapse: collapse; border-style: hidden;\" border=\"1\">\n" +
+                        "</table>" +
+                        "<table style=\"width: 100%; border-collapse: collapse; border-style: hidden;\" border=\"1\">\n" +
+                        "<tbody>\n" +
+                        "<tr>\n" +
+                        "<td style=\"width: 100%;\">&nbsp;</td>\n" +
+                        "</tr>\n" +
+                        "</tbody>\n" +
+                        "</table>\n" +
+                        "<table style=\"border-collapse: collapse; width: 100%;\" border=\"1\">\n" +
+                        "<tbody>\n" +
+                        "<tr>\n" +
+                        "<td style=\"width: 37.7737%;\"><strong>Ders Kitabı</strong></td>\n" +
+                        "<td style=\"width: 62.2263%;\">&nbsp;</td>\n" +
+                        "</tr>\n" +
+                        "<tr>\n" +
+                        "<td style=\"width: 37.7737%;\"><strong>Önerilen Okumalar/Materyaller</strong></td>\n" +
+                        "<td style=\"width: 62.2263%;\">&nbsp;</td>\n" +
+                        "</tr>\n" +
+                        "</tbody>\n" +
+                        "</table>\n" +
+                        "<table style=\"width: 100%; border-collapse: collapse; border-style: hidden;\" border=\"1\">\n" +
+                        "<tbody>\n" +
+                        "<tr>\n" +
+                        "<td style=\"width: 100%;\">&nbsp;</td>\n" +
+                        "</tr>\n" +
+                        "</tbody>\n" +
+                        "</table>\n" +
+                        "<table style=\"height: 18px; width: 100%; border-collapse: collapse; background-color: #ffa500;\" border=\"1\">\n" +
+                        "<tbody>\n" +
+                        "<tr style=\"height: 18px;\">\n" +
+                        "<td style=\"width: 100%; height: 18px;\">\n" +
+                        "<p><strong>3. Değerlendirme Ölçütleri</strong></p>\n" +
+                        "</td>\n" +
+                        "</tr>\n" +
+                        "</tbody>\n" +
+                        "</table>\n" +
+                        "<table style=\"width: 100%; border-collapse: collapse; border-style: hidden;\" border=\"1\">\n" +
+                        "<tbody>\n" +
+                        "<tr>\n" +
+                        "<td style=\"width: 100%;\">&nbsp;</td>\n" +
+                        "</tr>\n" +
+                        "</tbody>\n" +
+                        "</table>\n" +
+                        "<table style=\"border-collapse: collapse; width: 100%; height: 234px;\" border=\"1\">\n" +
+                        "<tbody>\n" +
+                        "<tr style=\"height: 18px;\">\n" +
+                        "<td style=\"width: 29.3187%; height: 18px;\"><strong>Yarıyıl Aktiviteleri</strong></td>\n" +
+                        "<td class=\"td1\" style=\"width: 16.2409%; height: 18px;\" valign=\"top\">\n" +
+                        "<p class=\"p1\"><strong>Sayı<span class=\"Apple-converted-space\">&nbsp;</span></strong></p>\n" +
+                        "</td>\n" +
+                        "<td class=\"td1\" style=\"width: 54.3796%; height: 18px;\" valign=\"top\">\n" +
+                        "<p class=\"p1\"><strong>Katkı Payı %<span class=\"Apple-converted-space\">&nbsp;</span></strong></p>\n" +
+                        "</td>\n" +
+                        "</tr>\n" +
+                        "<tr style=\"height: 18px;\">\n" +
+                        "<td style=\"width: 29.3187%; height: 18px;\">Katılım</td>\n" +
+                        "<td style=\"width: 16.2409%; height: 18px;\">" + attendanceNumber + "</td>\n" +
+                        "<td style=\"width: 54.3796%; height: 18px;\">" + attendancePer + "</td>\n" +
+                        "</tr>\n" +
+                        "<tr style=\"height: 18px;\">\n" +
+                        "<td style=\"width: 29.3187%; height: 18px;\">Laboratuvar/Uygulama</td>\n" +
+                        "<td style=\"width: 16.2409%; height: 18px;\">" + labNumber + "</td>\n" +
+                        "<td style=\"width: 54.3796%; height: 18px;\">" + labPer + "</td>\n" +
+                        "</tr>\n" +
+                        "<tr style=\"height: 18px;\">\n" +
+                        "<td style=\"width: 29.3187%; height: 18px;\">Arazi Çalışması</td>\n" +
+                        "<td style=\"width: 16.2409%; height: 18px;\">" + fieldNumber + "</td>\n" +
+                        "<td style=\"width: 54.3796%; height: 18px;\">" + fieldPer + "</td>\n" +
+                        "</tr>\n" +
+                        "<tr style=\"height: 18px;\">\n" +
+                        "<td style=\"width: 29.3187%; height: 18px;\">Küçük Sınav/Stüdyo Kritiği</td>\n" +
+                        "<td style=\"width: 16.2409%; height: 18px;\">" + quizNumber + "</td>\n" +
+                        "<td style=\"width: 54.3796%; height: 18px;\">" + quizPer + "</td>\n" +
+                        "</tr>\n" +
+                        "<tr style=\"height: 18px;\">\n" +
+                        "<td style=\"width: 29.3187%; height: 18px;\">Ödev</td>\n" +
+                        "<td style=\"width: 16.2409%; height: 18px;\">" + hWorkNumber + "</td>\n" +
+                        "<td style=\"width: 54.3796%; height: 18px;\">" + hWorkPer + "</td>\n" +
+                        "</tr>\n" +
+                        "<tr style=\"height: 18px;\">\n" +
+                        "<td style=\"width: 29.3187%; height: 18px;\">Sunum/Jüri Önünde Sunum</td>\n" +
+                        "<td style=\"width: 16.2409%; height: 18px;\">" + presentNumber + "</td>\n" +
+                        "<td style=\"width: 54.3796%; height: 18px;\">" + presentPer + "</td>\n" +
+                        "</tr>\n" +
+                        "<tr style=\"height: 18px;\">\n" +
+                        "<td style=\"width: 29.3187%; height: 18px;\">Proje</td>\n" +
+                        "<td style=\"width: 16.2409%; height: 18px;\">" + projectNumber + "</td>\n" +
+                        "<td style=\"width: 54.3796%; height: 18px;\">" + projectPer + "</td>\n" +
+                        "</tr>\n" +
+                        "<tr style=\"height: 18px;\">\n" +
+                        "<td style=\"width: 29.3187%; height: 18px;\">Seminer/Çalıştay</td>\n" +
+                        "<td style=\"width: 16.2409%; height: 18px;\">" + seminarNumber + "</td>\n" +
+                        "<td style=\"width: 54.3796%; height: 18px;\">" + seminarPer + "</td>\n" +
+                        "</tr>\n" +
+                        "<tr style=\"height: 18px;\">\n" +
+                        "<td style=\"width: 29.3187%; height: 18px;\">Sözlü Sınav</td>\n" +
+                        "<td style=\"width: 16.2409%; height: 18px;\">" + portNumber + "</td>\n" +
+                        "<td style=\"width: 54.3796%; height: 18px;\">" + portPer + "</td>\n" +
+                        "</tr>\n" +
+                        "<tr style=\"height: 18px;\">\n" +
+                        "<td style=\"width: 29.3187%; height: 18px;\">Ara Sınav</td>\n" +
+                        "<td style=\"width: 16.2409%; height: 18px;\">" + midtermNumber + "</td>\n" +
+                        "<td style=\"width: 54.3796%; height: 18px;\">" + midtermPer + "</td>\n" +
+                        "</tr>\n" +
+                        "<tr style=\"height: 18px;\">\n" +
+                        "<td style=\"width: 29.3187%; height: 18px;\">Final Sınavı</td>\n" +
+                        "<td style=\"width: 16.2409%; height: 18px;\">" + finalNumber + "</td>\n" +
+                        "<td style=\"width: 54.3796%; height: 18px;\">" + finalPer + "</td>\n" +
+                        "</tr>\n" +
+                        "<tr style=\"height: 18px;\">\n" +
+                        "<td style=\"width: 29.3187%; height: 18px;\">Toplam</td>\n" +
+                        "<td style=\"width: 16.2409%; height: 18px;\">" + araToNumber + "</td>\n" +
+                        "<td style=\"width: 54.3796%; height: 18px;\">" + araToPer + "</td>\n" +
+                        "</tr>\n" +
+                        "</tbody>\n" +
+                        "</table>\n" +
+                        "<table style=\"width: 100%; border-collapse: collapse; border-style: hidden;\" border=\"1\">\n" +
+                        "<tbody>\n" +
+                        "<tr>\n" +
+                        "<td style=\"width: 100%;\">&nbsp;</td>\n" +
+                        "</tr>\n" +
+                        "</tbody>\n" +
+                        "</table>\n" +
+                        "<table style=\"width: 100%; border-collapse: collapse; background-color: #ffa500;\" border=\"1\">\n" +
+                        "<tbody>\n" +
+                        "<tr>\n" +
+                        "<td style=\"width: 100%;\">\n" +
+                        "<p><strong>4. AKTS / İş Yükü Tablosu</strong></p>\n" +
+                        "</td>\n" +
+                        "</tr>\n" +
+                        "</tbody>\n" +
+                        "</table>\n" +
+                        "<table style=\"width: 100%; border-collapse: collapse; border-style: hidden;\" border=\"1\">\n" +
+                        "<tbody>\n" +
+                        "<tr>\n" +
+                        "<td style=\"width: 100%;\">&nbsp;</td>\n" +
+                        "</tr>\n" +
+                        "</tbody>\n" +
+                        "</table>\n" +
+                        "<table style=\"border-collapse: collapse; width: 100%; height: 198px;\" border=\"1\">\n" +
+                        "<tbody>\n" +
+                        "<tr style=\"height: 36px;\">\n" +
+                        "<td style=\"width: 43.2481%; height: 36px;\"><strong>Yarıyıl Aktiviteleri</strong></td>\n" +
+                        "<td style=\"width: 13.5037%; height: 36px;\"><strong>Sayı</strong></td>\n" +
+                        "<td style=\"width: 13.5036%; height: 36px;\"><strong>Süre (Saat)</strong></td>\n" +
+                        "<td class=\"td1\" style=\"width: 29.5621%; height: 36px;\" valign=\"top\">\n" +
+                        "<p class=\"p1\"><strong>İş Yükü<span class=\"Apple-converted-space\">&nbsp;</span></strong></p>\n" +
+                        "</td>\n" +
+                        "</tr>\n" +
+                        "<tr style=\"height: 18px;\">\n" +
+                        "<td style=\"width: 43.2481%; height: 18px;\">Teorik Ders Saati</td>\n" +
+                        "<td style=\"width: 13.5037%; height: 18px;\">" + courseHourNumber + "</td>\n" +
+                        "<td style=\"width: 13.5036%; height: 18px;\">" + courseHourDuration + "</td>\n" +
+                        "<td style=\"width: 29.5621%; height: 18px;\">" + courseHourWLoad + "</td>\n" +
+                        "</tr>\n" +
+                        "<tr style=\"height: 18px;\">\n" +
+                        "<td style=\"width: 43.2481%; height: 18px;\">Laboratuvar/Uygulama Ders Saati</td>\n" +
+                        "<td style=\"width: 13.5037%; height: 18px;\">" + labHourNumber + "</td>\n" +
+                        "<td style=\"width: 13.5036%; height: 18px;\">" + labHourDuration + "</td>\n" +
+                        "<td style=\"width: 29.5621%; height: 18px;\">" + labHourWLoad + "</td>\n" +
+                        "</tr>\n" +
+                        "<tr style=\"height: 18px;\">\n" +
+                        "<td style=\"width: 43.2481%; height: 18px;\">Sınıf Dışı Ders Çalışması</td>\n" +
+                        "<td style=\"width: 13.5037%; height: 18px;\">" + outHourNumber + "</td>\n" +
+                        "<td style=\"width: 13.5036%; height: 18px;\">" + outHourDuration + "</td>\n" +
+                        "<td style=\"width: 29.5621%; height: 18px;\">" + outHourWLoad + "</td>\n" +
+                        "</tr>\n" +
+                        "<tr style=\"height: 18px;\">\n" +
+                        "<td style=\"width: 43.2481%; height: 18px;\">Arazi Çalışması</td>\n" +
+                        "<td style=\"width: 13.5037%; height: 18px;\">" + fieldworkHourNumber + "</td>\n" +
+                        "<td style=\"width: 13.5036%; height: 18px;\">" + fieldworkHourDuration + "</td>\n" +
+                        "<td style=\"width: 29.5621%; height: 18px;\">" + fieldworkHourWLoad + "</td>\n" +
+                        "</tr>\n" +
+                        "<tr style=\"height: 18px;\">\n" +
+                        "<td style=\"width: 43.2481%; height: 18px;\">Küçük Sınav/Stüdyo Kritiği</td>\n" +
+                        "<td style=\"width: 13.5037%; height: 18px;\">" + quizHourNumber + "</td>\n" +
+                        "<td style=\"width: 13.5036%; height: 18px;\">" + quizHourDuration + "</td>\n" +
+                        "<td style=\"width: 29.5621%; height: 18px;\">" + quizHourWLoad + "</td>\n" +
+                        "</tr>\n" +
+                        "<tr style=\"height: 18px;\">\n" +
+                        "<td style=\"width: 43.2481%; height: 18px;\">Ödev</td>\n" +
+                        "<td style=\"width: 13.5037%; height: 18px;\">" + hWorkHourNumber + "</td>\n" +
+                        "<td style=\"width: 13.5036%; height: 18px;\">" + hWorkHourDuration + "</td>\n" +
+                        "<td style=\"width: 29.5621%; height: 18px;\">" + hWorkHourWLoad + "</td>\n" +
+                        "</tr>\n" +
+                        "<tr style=\"height: 18px;\">\n" +
+                        "<td style=\"width: 43.2481%; height: 18px;\">Sunum/Jüri Önünde Sunum</td>\n" +
+                        "<td style=\"width: 13.5037%; height: 18px;\">" + presentHourNumber + "</td>\n" +
+                        "<td style=\"width: 13.5036%; height: 18px;\">" + presentHourDuration + "</td>\n" +
+                        "<td style=\"width: 29.5621%; height: 18px;\">" + presentHourWLoad + "</td>\n" +
+                        "</tr>\n" +
+                        "<tr style=\"height: 18px;\">\n" +
+                        "<td style=\"width: 43.2481%; height: 18px;\">Proje</td>\n" +
+                        "<td style=\"width: 13.5037%; height: 18px;\">" + projectHourNumber + "</td>\n" +
+                        "<td style=\"width: 13.5036%; height: 18px;\">" + projectHourDuration + "</td>\n" +
+                        "<td style=\"width: 29.5621%; height: 18px;\">" + projectHourWLoad + "</td>\n" +
+                        "</tr>\n" +
+                        "<tr style=\"height: 18px;\">\n" +
+                        "<td style=\"width: 43.2481%; height: 18px;\">Seminer/Çalıştay</td>\n" +
+                        "<td style=\"width: 13.5037%; height: 18px;\">" + seminarHourNumber + "</td>\n" +
+                        "<td style=\"width: 13.5036%; height: 18px;\">" + seminarHourDuration + "</td>\n" +
+                        "<td style=\"width: 29.5621%; height: 18px;\">" + seminarHourWLoad + "</td>\n" +
+                        "</tr>\n" +
+                        "<tr>\n" +
+                        "<td style=\"width: 43.2481%;\">Sözlü Sınav</td>\n" +
+                        "<td style=\"width: 13.5037%;\">" + portHourNumber + " </td>\n" +
+                        "<td style=\"width: 13.5036%;\">" + portHourDuration + "</td>\n" +
+                        "<td style=\"width: 29.5621%;\">" + portHourWLoad + "</td>\n" +
+                        "</tr>\n" +
+                        "<tr>\n" +
+                        "<td style=\"width: 43.2481%;\">Ara Sınavlar</td>\n" +
+                        "<td style=\"width: 13.5037%;\">" + midtermHourNumber + "</td>\n" +
+                        "<td style=\"width: 13.5036%;\">" + midtermHourDuration + "</td>\n" +
+                        "<td style=\"width: 29.5621%;\">" + midtermHourWLoad + "</td>\n" +
+                        "</tr>\n" +
+                        "<tr>\n" +
+                        "<td style=\"width: 43.2481%;\">Final Sınavı</td>\n" +
+                        "<td style=\"width: 13.5037%;\">" + finalHourNumber + "</td>\n" +
+                        "<td style=\"width: 13.5036%;\">" + finalHourDuration + "</td>\n" +
+                        "<td style=\"width: 29.5621%;\">" + finalHourWLoad + "</td>\n" +
+                        "</tr>\n" +
+                        "<tr>\n" +
+                        "<td style=\"width: 43.2481%;\">&nbsp;</td>\n" +
+                        "<td style=\"width: 13.5037%;\">&nbsp;</td>\n" +
+                        "<td class=\"td1\" style=\"width: 13.5036%;\" valign=\"top\">\n" +
+                        "<p class=\"p1\"><strong>Toplam<span class=\"Apple-converted-space\">&nbsp;</span></strong></p>\n" +
+                        "</td>\n" +
+                        "<td style=\"width: 29.5621%;\">" + totalWLoad + "</td>\n" +
+                        "</tr>\n" +
+                        "</tbody>\n" +
+                        "</table>");
+                downloadedWriter.close();
+            } catch (IOException e) {
+                JOptionPane.showMessageDialog(messageWindow, "Something went wrong! Error Code: " + e);
+            }
         }
     }
 }
