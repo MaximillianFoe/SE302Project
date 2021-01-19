@@ -5,3 +5,7 @@
 - Cihan Çoban
 - Kaan Altıntaş
 - Selin Çiftçi
+
+# Where is Wiki Page?:
+** Up there but if you still couldn't find; here's a link: **
+[Wiki Page with Help File](https://github.com/MaximillianFoe/SE302Project/wiki)
